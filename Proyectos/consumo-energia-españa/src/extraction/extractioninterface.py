@@ -6,6 +6,3 @@ class ExtractionInterface(metaclass=ABCMeta):
     @abstractmethod
     def get_valuesAemet(self):
         pass
-    @abstractmethod
-    def get_dataframe(self,data):
-        pass
