@@ -1,6 +1,6 @@
 # Constants for the ESIOS API
 TOKEN_ESIOS = "EL_TEU_TOKEN" # Token for ESIOS API
-API_KEY_AEMET = "LA_TEVA_CLAU" # API key for AEMET
+API_KEY_AEMET = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJic2FuemdhbGxlZ29AZ21haWwuY29tIiwianRpIjoiNjI2ODFmOTktOWIxOS00ZjFhLWE4NWUtYjQ2ZWFhNTQyODI2IiwiaXNzIjoiQUVNRVQiLCJpYXQiOjE3NDM1NDAxOTcsInVzZXJJZCI6IjYyNjgxZjk5LTliMTktNGYxYS1hODVlLWI0NmVhYTU0MjgyNiIsInJvbGUiOiIifQ.I8O4SXT0PlHBQv3EylVAoOtZ_LZ7NQlPOPySWedzvAE" # API key for AEMET
 # Definició de constants per a la connexió a l'API ESIOS
 HEADERS = {
     "Accept": "application/json",
