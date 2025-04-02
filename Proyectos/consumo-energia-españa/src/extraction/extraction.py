@@ -1,74 +1,21 @@
-import requests
 import pandas as pd
-from constant import *
-from extractioninterface import ExtractionInterface
+import requests
+from extraction.constant_API import *
+from extraction.extractioninterface import ExtractionInterface
 class extraction(ExtractionInterface):
-   def __get_dataframeEOSIS(self, response):
-      try:
-         data = response.json()
-         dataframe = pd.DataFrame(data["1001"]["values"])
-         dataframe.rename(columns={"value": "demanda_mw"}, inplace=True)
-      except ValueError as e:
-         print(f"Error parsing JSON: {e}")
-         dataframe = None
-      return dataframe
-   
-   def __get_dataframeAEMET(self, response):
-      try:
-         data = response.json()
-         url_data = data.get("datos")
-         if url_data:
-            response = requests.get(url_data)
-            if self.__is_connection_enabled(response):
-               dataframe = pd.DataFrame(response.json())
-               dataframe = dataframe[["fecha", "provincia", "tmed"]]
-               dataframe.rename(columns={"tmed": "temperatura_media"}, inplace=True)
-         else:
-            print("No URL found in the response.")
-      except ValueError as e:
-         print(f"Error parsing JSON: {e}")
-         dataframe = None
-      return dataframe
+   def get_valuesEOSIS(self):
+      res = requests.get(URL_ESIOS, headers=Headers_ESIOS)
+      data = res.json()
+      df = pd.DataFrame(data['indicator']['values'])
+      return df
 
-   def __move_dataframe(self, dataframe,file):
-      try:
-         dataframe.to_csv(file, index=False)
-         print("Dataframe moved to output.csv")
-      except Exception as e:
-         print(f"Error moving dataframe: {e}")
-
-   def __is_connection_enabled(self, response):
-      if response.status_code == 200:
-         return True
+   def get_valuesAEMET(self,start,final):
+      aemet = f"https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/{start}T00:00:00UTC/fechafin/{final}T23:59:59UTC/todasestaciones/"
+      res = requests.get(aemet, params=PARAMS_AEMET)
+      data = res.json()
+      if 'datos' in data:
+         data = requests.get(data['datos'])
+         data = data.json()
       else:
-         return False
-      
-   def get_valuesEOSIS(self,timeout,file):
-      try:
-         response = requests.get(url=URL_ESIOS, headers=HEADERS_EOSIS, params=PARAMS_EOSIS,timeout=timeout)
-         if self.__is_connection_enabled(response):
-            df = self.__get_dataframeEOSIS(response)
-            if df is not None:
-               self.__move_dataframe(df,file)
-            else:
-               print("No data found in the response.")
-         else:
-            print(f"Error: {response.status_code}")
-      except requests.exceptions.RequestException as e:
-         print(f"Error en la petició: {response.status_code} - {response.text}")
-         print(f"Request failed: {e}")
-   
-   def get_valuesAEMET(self,timeout,file):
-      try:
-         response = requests.get(url=URL_AEMET,params=PARAMS_AEMET,timeout=timeout)
-         if self.__is_connection_enabled(response):
-            df = self.__get_dataframeAEMET(response)
-            if df is not None:
-               self.__move_dataframe(df,file)
-            else:
-               print("No data found in the response.")
-         else:
-            print(f"Error: {response.status_code}")
-      except requests.exceptions.RequestException as e:
-         print(f"Error en la petició: {response.status_code} - {response.text}")
-         print(f"Request failed: {e}")
+         print("No se han encontrado datos en la respuesta de la API AEMET.")
+      return data

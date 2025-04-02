@@ -1,20 +1,9 @@
-from abc import ABCMeta, abstractmethod
-class ExtractionInterface(metaclass=ABCMeta):
+from abc import ABC, abstractmethod
+class ExtractionInterface(ABC):
     @abstractmethod
-    def get_valuesEOSIS(self,timeout):
+    def get_valuesEOSIS(self):
         pass
     @abstractmethod
-    def get_valuesAEMET(self,timeout):
+    def get_valuesAEMET(self,start,final):
         pass
-    @abstractmethod
-    def __get_dataframeEOSIS(self,response):
-        pass
-    @abstractmethod
-    def __get_dataframeAEMET(self,response):
-        pass
-    @abstractmethod
-    def __move_dataframe(self,dataframe,name_file):
-        pass
-    @abstractmethod
-    def __is_connection_enabled(self,response):
-        pass
+   
