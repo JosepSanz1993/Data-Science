@@ -7,10 +7,15 @@ HEADERS_EOSIS = {
     "Content-Type": "application/json",
     "Authorization": f"Token {TOKEN_ESIOS}"
 }
+PARAMS_EOSIS = {
+    "start_date": "2023-01-01T00:00:00Z",
+    "end_date": "2023-12-31T23:59:59Z",
+    "time_trunc": "hour"  
+}
+PARAMS_AEMET = {
+    "api_key": API_KEY_AEMET
+}
 # URLS para las APIs
 URL_ESIOS = "https://api.esios.ree.es/indicators/1001"
-URL_AEMET = ""
-# Definir el període de consulta
-START_DATE = "2023-01-01T00:00:00Z"
-END_DATE = "2023-12-31T23:59:59Z"
-ESIOSREQUEST = f"{URL_ESIOS}?start_date={START_DATE}&end_date={END_DATE}"
+URL_AEMET = "https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/2023-01-01T00:00:00UTC/fechafin/2023-12-31T23:59:59UTC/todasestaciones/"
+
