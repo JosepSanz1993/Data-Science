@@ -16,6 +16,4 @@ class extraction(ExtractionInterface):
       if 'datos' in data:
          data = requests.get(data['datos'])
          data = data.json()
-      else:
-         print("No se han encontrado datos en la respuesta de la API AEMET.")
       return data
