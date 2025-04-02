@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+from constant import *
 from extractioninterface import ExtractionInterface
 class extraction(ExtractionInterface):
    def __get_dataframeEOSIS(self, response):
@@ -42,9 +43,9 @@ class extraction(ExtractionInterface):
       else:
          return False
       
-   def get_valuesEOSIS(self,url,headers,params,timeout,file):
+   def get_valuesEOSIS(self,timeout,file):
       try:
-         response = requests.get(url, headers=headers, params=params,timeout=timeout)
+         response = requests.get(url=URL_ESIOS, headers=HEADERS_EOSIS, params=PARAMS_EOSIS,timeout=timeout)
          if self.__is_connection_enabled(response):
             df = self.__get_dataframeEOSIS(response)
             if df is not None:
@@ -54,12 +55,12 @@ class extraction(ExtractionInterface):
          else:
             print(f"Error: {response.status_code}")
       except requests.exceptions.RequestException as e:
-         print(f"⚠️ Error en la petició: {response.status_code} - {response.text}")
+         print(f"Error en la petició: {response.status_code} - {response.text}")
          print(f"Request failed: {e}")
    
-   def get_valuesAEMET(self,url,params,timeout,file):
+   def get_valuesAEMET(self,timeout,file):
       try:
-         response = requests.get(url, params=params,timeout=timeout)
+         response = requests.get(url=URL_AEMET,params=PARAMS_AEMET,timeout=timeout)
          if self.__is_connection_enabled(response):
             df = self.__get_dataframeAEMET(response)
             if df is not None:
@@ -69,5 +70,5 @@ class extraction(ExtractionInterface):
          else:
             print(f"Error: {response.status_code}")
       except requests.exceptions.RequestException as e:
-         print(f"⚠️ Error en la petició: {response.status_code} - {response.text}")
+         print(f"Error en la petició: {response.status_code} - {response.text}")
          print(f"Request failed: {e}")

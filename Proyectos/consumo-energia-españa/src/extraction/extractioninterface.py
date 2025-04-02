@@ -1,10 +1,10 @@
 from abc import ABCMeta, abstractmethod
 class ExtractionInterface(metaclass=ABCMeta):
     @abstractmethod
-    def get_valuesEOSIS(self,url,headers,params,timeout):
+    def get_valuesEOSIS(self,timeout):
         pass
     @abstractmethod
-    def get_valuesAEMET(self,url,params,timeout):
+    def get_valuesAEMET(self,timeout):
         pass
     @abstractmethod
     def __get_dataframeEOSIS(self,response):
