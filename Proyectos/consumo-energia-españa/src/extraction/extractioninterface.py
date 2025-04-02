@@ -4,7 +4,6 @@ class ExtractionInterface(metaclass=ABCMeta):
     def get_valuesEOSIS(self,url,headers,params,timeout):
         pass
     @abstractmethod
-    @abstractmethod
     def get_valuesAEMET(self,url,params,timeout):
         pass
     @abstractmethod
