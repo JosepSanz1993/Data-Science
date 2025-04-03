@@ -20,7 +20,6 @@ class ETL:
         d_list = self.__datelist
         list_temp = []
         for i in range(len(d_list)-1):
-            data = self.__extract.get_valuesAEMET(d_list[i],d_list[i+1])
-            list_temp.append(data)
-        return pd.DataFrame(list(map(lambda x:{key : x.get(key,None) for key in values},list_temp[0])))
+            data = self.__extract.get_valuesAEMET(d_list[i],d_list[i+1],list_temp)
+        return pd.DataFrame(list(map(lambda x:{key : x.get(key) for key in values},data)))
     

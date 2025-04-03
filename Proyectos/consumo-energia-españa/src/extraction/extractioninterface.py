@@ -4,6 +4,6 @@ class ExtractionInterface(ABC):
     def get_valuesEOSIS(self):
         pass
     @abstractmethod
-    def get_valuesAEMET(self,start,final):
+    def get_valuesAEMET(self,start,final,result):
         pass
    
