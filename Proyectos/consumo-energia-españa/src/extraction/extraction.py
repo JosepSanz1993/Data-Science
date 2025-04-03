@@ -11,9 +11,10 @@ class extraction(ExtractionInterface):
 
    def get_valuesAEMET(self,start,final):
       aemet = f"https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/{start}T00:00:00UTC/fechafin/{final}T23:59:59UTC/todasestaciones/"
-      res = requests.get(aemet, params=PARAMS_AEMET)
+      res = requests.get(aemet, params=PARAMS_AEMET,timeout=20)
       data = res.json()
       if 'datos' in data:
          data = requests.get(data['datos'])
          data = data.json()
       return data
+   
