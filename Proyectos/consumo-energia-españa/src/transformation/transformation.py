@@ -10,7 +10,7 @@ class Transform(TransformationInterface):
         self.__df[column_name] = pd.to_datetime(self.__df[column_name])
 
     def round_to_hours(self, column_name):
-        self.__df[column_name] = self.__df[column_name].dt.round('H')
+        self.__df[column_name] = self.__df[column_name].dt.round('h')
 
     def calculate_auxiliary_columns(self, column_name):
         self.__df['hora'] = self.__df[column_name].dt.hour
@@ -18,7 +18,7 @@ class Transform(TransformationInterface):
         self.__df['mes'] = self.__df[column_name].dt.month
 
     def merge_with(self, other_csv, on_columns=None, how='outer'):
-        if on_columns is None:
+        if on_columns is None and other_csv is not None:
             on_columns = ['fecha', 'region']
         
         other_df = pd.read_csv(other_csv)
