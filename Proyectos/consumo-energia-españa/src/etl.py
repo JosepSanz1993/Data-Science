@@ -2,7 +2,6 @@ from extraction.extraction import extraction
 from datetime import date, timedelta
 import polars as pl
 from extraction.extraction import pd
-from itertools import chain
 class ETL:
     def __init__(self,ini,final,days):
         self.__datelist = self.__date_list(ini,final,days)
@@ -23,7 +22,5 @@ class ETL:
         for i in range(len(d_list)-1):
             data = self.__extract.get_valuesAEMET(d_list[i],d_list[i+1])
             list_temp.append(data)
-        list_temp = list(chain.from_iterable(list_temp))
-        print("Contingut de list_temp:", list_temp)
-        return pd.DataFrame(list(map(lambda x:{key : x.get(key,None) for key in values},list_temp)))
+        return pd.DataFrame(list(map(lambda x:{key : x.get(key,None) for key in values},list_temp[0])))
     

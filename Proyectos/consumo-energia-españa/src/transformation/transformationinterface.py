@@ -1,17 +1,15 @@
 from abc import ABCMeta, abstractmethod
 class TransformationInterface(metaclass=ABCMeta):
     @abstractmethod
-    def change_to_datatime(self,file):
+    def change_to_datatime(self,name):
         pass
     @abstractmethod
-    def round_to_hours(self,file):
+    def round_to_hours(self,name):
         pass
     @abstractmethod
-    def calculate_to_auxiliar(self,file):
+    def calculate_to_auxiliar(self,name):
         pass
     @abstractmethod
-    def join_dataset_for_date_and_region(self,file):
+    def move_to_folder(self,df,path):
         pass
-    @abstractmethod
-    def move_to_folder(self,file,folder):
-        pass
+    
