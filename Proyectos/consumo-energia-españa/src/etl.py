@@ -21,5 +21,6 @@ class ETL:
         list_temp = []
         for i in range(len(d_list)-1):
             data = self.__extract.get_valuesAEMET(d_list[i],d_list[i+1],list_temp)
+        data = self.__extract.get_valuesAEMET(d_list[-2],d_list[-1])
         return pd.DataFrame(list(map(lambda x:{key : x.get(key) for key in values},data)))
     
