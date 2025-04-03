@@ -1,6 +1,5 @@
 from extraction.extraction import extraction
 from datetime import date, timedelta
-import polars as pl
 from extraction.extraction import pd
 class ETL:
     def __init__(self,ini,final,days):
@@ -15,6 +14,10 @@ class ETL:
             ini += delta
         return dates
     
+    def get_df_esios(self,name,start,end):
+        df = self.__extract.get_valuesEOSIS(name,start,end)
+        return df.drop(columns=["orden","offer_sum","offer","assignation_sum","assignation"])
+
     def get_df_temp(self):
         values = ["fecha","tmed","provincia"]
         d_list = self.__datelist

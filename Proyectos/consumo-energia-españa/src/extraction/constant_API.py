@@ -5,12 +5,17 @@ API_KEY_AEMET = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJic2FuemdhbGxlZ29AZ21haWwuY29tIi
 PARAMS_AEMET = {
     "api_key": API_KEY_AEMET
 }
-Headers_ESIOS = {
-    'Accept': 'application/json; application/vnd.esios-api-v1+json',
-    'Content-Type': 'application/json',
-    'x-api-key':TOKEN_ESIOS
+PARAMS_ESIOS = {
+    'start_date': '2023-01-01T00:00:00',  
+    'end_date': '2023-12-31T23:59:59',    
+    'frequency': 'hourly',
 }
+Headers_ESIOS = {
+    'Authorization': f'Token {TOKEN_ESIOS}',
+    'Accept': 'application/json',
+}
+
 # URL para las API ESIOS
-URL_ESIOS = "https://api.esios.ree.es/indicators/1001?start_date=2023-01-1T00%3A00%3A00Z&end_date=2023-12-31T07%3A34%3A17Z"
+URL_ESIOS = 'https://api.esios.ree.es/indicators/1011'
 
 
