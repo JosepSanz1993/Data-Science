@@ -1,15 +1,21 @@
 from abc import ABCMeta, abstractmethod
 class TransformationInterface(metaclass=ABCMeta):
     @abstractmethod
-    def change_to_datatime(self,name):
+    def change_to_datetime(self, column_name):
         pass
+
     @abstractmethod
-    def round_to_hours(self,name):
+    def round_to_hours(self, column_name):
         pass
+
     @abstractmethod
-    def calculate_to_auxiliar(self,name):
+    def calculate_auxiliary_columns(self, column_name):
         pass
+
     @abstractmethod
-    def move_to_folder(self,df,path):
+    def merge_with(self, other_csv, on_columns=None, how='outer'):
         pass
-    
+
+    @abstractmethod
+    def save_to_folder(self, path):
+        pass
