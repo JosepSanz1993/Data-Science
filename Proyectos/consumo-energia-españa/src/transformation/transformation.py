@@ -1,33 +1,21 @@
 from transformation.transformationinterface import TransformationInterface
 import pandas as pd
-import os
+from extraction.constant_API import dias_esp, meses_es
 class Transform(TransformationInterface):
-    def __init__(self, csv_path):
-        self.__df = pd.read_csv(csv_path)
-        self.__csv_path = csv_path 
+    def load_data(self, file_path: str) -> pd.DataFrame:
+        return pd.read_csv(file_path)
+    
+    def preprocess_dates(self, df: pd.DataFrame) -> pd.DataFrame:
+        df['fecha'] = pd.to_datetime(df['fecha'])
+        df['fecha'] = df['fecha'].dt.round('h')
+        df['hora'] = df['fecha'].dt.hour
+        df['día de la semana'] = df['fecha'].dt.day_name().map(dias_esp)
+        df['mes'] = df['fecha'].dt.month.map(meses_es)
+        return df
 
-    def change_to_datetime(self, column_name):
-        self.__df[column_name] = pd.to_datetime(self.__df[column_name])
+    def merge_datasets(self, df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
+        merged_df = pd.merge(df1, df2, on=['fecha', 'provincia'], how='inner')
+        return merged_df
 
-    def round_to_hours(self, column_name):
-        self.__df[column_name] = self.__df[column_name].dt.round('h')
-
-    def calculate_auxiliary_columns(self, column_name):
-        self.__df['hora'] = self.__df[column_name].dt.hour
-        self.__df['dia_setmana'] = self.__df[column_name].dt.day_name()
-        self.__df['mes'] = self.__df[column_name].dt.month
-
-    def merge_with(self, other_csv, on_columns=None, how='outer'):
-        if on_columns is None and other_csv is not None:
-            on_columns = ['fecha', 'region']
-        
-        other_df = pd.read_csv(other_csv)
-        other_df[on_columns[0]] = pd.to_datetime(other_df[on_columns[0]]) 
-        self.__df = pd.merge(self.__df, other_df, on=on_columns, how=how)
-
-    def save_to_folder(self, path):
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        self.__df.to_csv(path, index=False)
-
-    def __str__(self):
-        return str(self.__df.head())  
+    def save_data(self, df: pd.DataFrame, file_path: str) -> None:
+        df.to_csv(file_path, index=False)

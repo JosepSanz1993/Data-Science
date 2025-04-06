@@ -2,16 +2,9 @@ import pandas as pd
 import requests
 from extraction.constant_API import *
 from extraction.extractioninterface import ExtractionInterface
-from esios import ESIOSClient
-import os
-os.environ['ESIOS_API_KEY'] = TOKEN_ESIOS
 class extraction(ExtractionInterface):
-   def get_valuesEOSIS(self,name,start,end):
-      client = ESIOSClient()
-      endpoint = client.endpoint(name=name)
-      df = endpoint.list() 
-      indicator = endpoint.select(670)
-      df = indicator.historical(start=start,end=end)
+   def get_valuesEOSIS(self,path):
+      df = pd.read_csv(path)
       return df
 
 

@@ -1,21 +1,18 @@
 from abc import ABCMeta, abstractmethod
+import pandas as pd
 class TransformationInterface(metaclass=ABCMeta):
     @abstractmethod
-    def change_to_datetime(self, column_name):
+    def load_data(self, file_path: str) -> pd.DataFrame:
         pass
 
     @abstractmethod
-    def round_to_hours(self, column_name):
+    def preprocess_dates(self, df: pd.DataFrame) -> pd.DataFrame:
+        pass
+    
+    @abstractmethod
+    def merge_datasets(self, df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
         pass
 
     @abstractmethod
-    def calculate_auxiliary_columns(self, column_name):
-        pass
-
-    @abstractmethod
-    def merge_with(self, other_csv, on_columns=None, how='outer'):
-        pass
-
-    @abstractmethod
-    def save_to_folder(self, path):
+    def save_data(self, df: pd.DataFrame, file_path: str) -> None:
         pass
