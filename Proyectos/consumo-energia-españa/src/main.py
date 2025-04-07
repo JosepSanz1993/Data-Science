@@ -3,6 +3,7 @@
 from etl import date,ETL
 import pandas as pd
 from extraction.constant_API import *
+from eda.eda import AnalisisConsumo
 init = date(2023,1,1)
 final = date(2023,12,31)
 days = 14
@@ -13,12 +14,13 @@ path_pre_aemet = "data/preprocessed/Aemet_2023_pre.csv"
 path_energy = "data/processed/energia_temp.csv"
 values = ["fecha","tmed","provincia"]
 
-# Crear una instancia de la clase ETL
+# Crear una instancia de las clases
 Etl_Esios = ETL(None,path_esios)
 Etl_Aemet = ETL((init,final,days),path_aemet)
+Analisis = AnalisisConsumo()
 
 # Extraer los datos de la API ESIOS
-df = Etl_Esios.get_df_esios("Valor (€/kWh)")
+"""df = Etl_Esios.get_df_esios("Valor (€/kWh)")
 
 #transformar los datos
 df.dropna(inplace=True)
@@ -40,11 +42,15 @@ df.reset_index(inplace=True)
 df.rename(columns={"tmed":"temp_media"})
 Aemet_df = Etl_Aemet.get_transform()
 Etl_Aemet.set_path(path_pre_aemet)
-Etl_Aemet.save_data(Aemet_df, path_pre_aemet)
+Etl_Aemet.save_data(Aemet_df, path_pre_aemet)"""
 
-#Juntamos los dos dataframes si es possible
-if Etl_Esios is not None and Etl_Aemet is not None:
-    merged = Etl_Esios.merge_datasets(Esios_df, Aemet_df)
-    Etl_Esios.save_data(merged, path_energy)
-else:
-    print("One or two dataframes are None")
+#Análisis Exploratorio (EDA)
+Analisis.cargar_datos(path_pre_esios)
+Analisis.distribucion_por_hora()
+Analisis.comparativa_dia_tipo()
+Analisis.consumo_por_region()
+Analisis.evolucion_mensual()
+
+
+
+

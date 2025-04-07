@@ -1,8 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from edainterface import edainterface
-class AnalisisConsumo(edainterface):
+from eda.edainterface import ConsumoInterface
+from extraction.constant_API import dia_semana_num
+class AnalisisConsumo(ConsumoInterface):
     
     def __init__(self):
         self.df = None
@@ -14,7 +15,8 @@ class AnalisisConsumo(edainterface):
         if 'día de la semana' not in self.df.columns:
             self.df['día de la semana'] = self.df['fecha'].dt.dayofweek
         if 'tipo_dia' not in self.df.columns:
-            self.df['tipo_dia'] = self.df['día de la semana'].apply(lambda x: 'Fin de setmana' if x >= 5 else 'Laborable')
+            self.df['día de la semana (int)'] = self.df['día de la semana'].map(dia_semana_num)
+            self.df['tipo_dia'] = self.df['día de la semana (int)'].apply(lambda x: 'Fin de setmana' if x >= 5 else 'Laborable')
         if 'año_mes' not in self.df.columns:
             self.df['año_mes'] = self.df['fecha'].dt.to_period('M')
     
