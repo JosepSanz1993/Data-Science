@@ -6,9 +6,17 @@ class AnalisisConsumo(edainterface):
     
     def __init__(self):
         self.df = None
-    
-    def cargar_datos(self, filepath):
-        self.df = pd.read_csv(filepath)
+        
+    def cargar_datos(self, filepath: str):
+        self.df = pd.read_csv(filepath, parse_dates=['fecha'])
+        if 'hora' not in self.df.columns:
+            self.df['hora'] = self.df['fecha'].dt.hour
+        if 'día de la semana' not in self.df.columns:
+            self.df['día de la semana'] = self.df['fecha'].dt.dayofweek
+        if 'tipo_dia' not in self.df.columns:
+            self.df['tipo_dia'] = self.df['día de la semana'].apply(lambda x: 'Fin de setmana' if x >= 5 else 'Laborable')
+        if 'año_mes' not in self.df.columns:
+            self.df['año_mes'] = self.df['fecha'].dt.to_period('M')
     
     def distribucion_por_hora(self):
         consumo_horario = self.df.groupby('hora')['consumo'].mean()
@@ -30,7 +38,7 @@ class AnalisisConsumo(edainterface):
     def consumo_por_region(self):
         if 'provincia' in self.df.columns:
             consumo_region = self.df.groupby('provincia')['consumo'].mean().sort_values(ascending=False)
-            plt.figure(figsize=(10, 5))
+            plt.figure(figsize=(12, 6))
             consumo_region.plot(kind='bar')
             plt.title("Consumo medio por provincia")
             plt.ylabel("Consumo medio")

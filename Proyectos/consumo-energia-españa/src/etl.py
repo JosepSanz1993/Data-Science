@@ -37,4 +37,10 @@ class ETL:
         df = self.__transform.preprocess_dates(df)
         return df
     
+    def save_data(self,df,path):    
+        self.__transform.save_data(df,path)
+
+    def merge_datasets(self,df1,df2):
+        df = self.__transform.merge_datasets(df1,df2)
+        return df
 
