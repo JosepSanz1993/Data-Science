@@ -20,7 +20,7 @@ Etl_Aemet = ETL((init,final,days),path_aemet)
 Analisis = AnalisisConsumo()
 
 # Extraer los datos de la API ESIOS
-"""df = Etl_Esios.get_df_esios("Valor (€/kWh)")
+df = Etl_Esios.get_df_esios("Valor (€/kWh)")
 
 #transformar los datos
 df.dropna(inplace=True)
@@ -42,7 +42,16 @@ df.reset_index(inplace=True)
 df.rename(columns={"tmed":"temp_media"})
 Aemet_df = Etl_Aemet.get_transform()
 Etl_Aemet.set_path(path_pre_aemet)
-Etl_Aemet.save_data(Aemet_df, path_pre_aemet)"""
+Etl_Aemet.save_data(Aemet_df, path_pre_aemet)
+
+# Unir los datos de las dos APIs
+Esios_df['fecha'] = pd.to_datetime(Esios_df['fecha']).dt.date
+Aemet_df['tmed'] = Aemet_df['tmed'].str.replace(',','.')
+Aemet_df['fecha'] = pd.to_datetime(Aemet_df['fecha']).dt.date
+df_final = Esios_df.merge(Esios_df,Aemet_df, on=['provincia','fecha','hora','día de la semana','mes'], how='outer')
+df_final = df_final.sort_values(by=['provincia','fecha','hora'])
+Etl_Esios.set_path(path_energy)
+Etl_Esios.save_data(df_final, path_energy)
 
 #Análisis Exploratorio (EDA)
 Analisis.cargar_datos(path_pre_esios)
