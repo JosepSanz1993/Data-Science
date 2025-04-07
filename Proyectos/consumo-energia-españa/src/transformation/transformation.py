@@ -14,7 +14,7 @@ class Transform(TransformationInterface):
         return df
 
     def merge_datasets(self, df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
-        merged_df = pd.merge(df1, df2, on=['fecha', 'provincia'], how='inner')
+        merged_df = pd.merge(df1, df2, on=['provincia','fecha','hora','día de la semana','mes'], how='outer')
         return merged_df
 
     def save_data(self, df: pd.DataFrame, file_path: str) -> None:

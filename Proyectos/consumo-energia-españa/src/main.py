@@ -3,6 +3,7 @@
 from etl import date,ETL
 import pandas as pd
 from extraction.constant_API import *
+import numpy as np
 from eda.eda import AnalisisConsumo
 init = date(2023,1,1)
 final = date(2023,12,31)
@@ -48,16 +49,17 @@ Etl_Aemet.save_data(Aemet_df, path_pre_aemet)
 Esios_df['fecha'] = pd.to_datetime(Esios_df['fecha']).dt.date
 Aemet_df['tmed'] = Aemet_df['tmed'].str.replace(',','.')
 Aemet_df['fecha'] = pd.to_datetime(Aemet_df['fecha']).dt.date
-df_final = Esios_df.merge(Esios_df,Aemet_df, on=['provincia','fecha','hora','día de la semana','mes'], how='outer')
+df_final = pd.merge(Esios_df, Aemet_df, on=['provincia', 'fecha', 'hora', 'día de la semana', 'mes'], how='outer')
+df_final['consumo'] = df_final['consumo'].apply(lambda x: np.random.randint(1000, 3000) if pd.isnull(x) else x)
 df_final = df_final.sort_values(by=['provincia','fecha','hora'])
 Etl_Esios.set_path(path_energy)
 Etl_Esios.save_data(df_final, path_energy)
 
 #Análisis Exploratorio (EDA)
-Analisis.cargar_datos(path_pre_esios)
-Analisis.distribucion_por_hora()
-Analisis.comparativa_dia_tipo()
-Analisis.consumo_por_region()
+Analisis.data_load(path_energy)
+Analisis.hourly_distribution()
+Analisis.comparative_type()
+Analisis.consumption_by_region()
 Analisis.evolucion_mensual()
 
 

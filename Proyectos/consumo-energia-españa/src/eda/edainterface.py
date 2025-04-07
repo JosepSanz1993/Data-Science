@@ -3,19 +3,19 @@ from abc import ABC, abstractmethod
 class ConsumoInterface(ABC):
     
     @abstractmethod
-    def cargar_datos(self, filepath: str):
+    def data_load(self, filepath: str):
         pass
     
     @abstractmethod
-    def distribucion_por_hora(self):
+    def hourly_distribution(self):
         pass
     
     @abstractmethod
-    def comparativa_dia_tipo(self):
+    def comparative_type(self):
         pass
     
     @abstractmethod
-    def consumo_por_region(self):
+    def consumption_by_region(self):
         pass
     
     @abstractmethod
