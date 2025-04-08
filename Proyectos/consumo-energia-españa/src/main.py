@@ -30,7 +30,7 @@ df.dropna(inplace=True)
 df.columns = df.columns.str.lower()
 df['fecha'] = df['fecha']+ ' ' + df['hora']
 df.drop(columns='hora', inplace=True)
-df.rename(columns={"consumo por hora (kwh)": "consumo"}, inplace=True)
+df.rename(columns={"consumo por hora (kwh)": "consumo"}, inplace=True) 
 Etl_Esios.set_path(path_pre_esios)
 Esios_df = Etl_Esios.get_transform()
 Etl_Esios.save_data(Esios_df, path_pre_esios)
@@ -54,6 +54,8 @@ Aemet_df['fecha'] = pd.to_datetime(Aemet_df['fecha']).dt.date
 df_final = pd.merge(Esios_df, Aemet_df, on=['provincia', 'fecha', 'hora', 'día de la semana', 'mes'], how='outer')
 df_final['consumo'] = df_final['consumo'].apply(lambda x: np.random.randint(1000, 3000) if pd.isnull(x) else x)
 df_final = df_final.sort_values(by=['provincia','fecha','hora'])
+df_final = df_final.groupby(['fecha','provincia']).agg({'consumo':'sum','tmed':'mean'}).reset_index()
+df_final.rename(columns={'consumo':'consumo_total','tmed':'temperatura_media'},inplace=True)
 Etl_Esios.set_path(path_energy)
 Etl_Esios.save_data(df_final, path_energy)
 
