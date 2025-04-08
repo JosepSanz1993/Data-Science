@@ -19,8 +19,8 @@ values = ["fecha","tmed","provincia"]
 # Crear una instancia de las clases
 Etl_Esios = ETL(None,path_esios)
 Etl_Aemet = ETL((init,final,days),path_aemet)
-Analisis = AnalisisConsumo()
-GI = GraphicInterface() 
+#Analisis = AnalisisConsumo()
+#GI = GraphicInterface() 
 
 # Extraer los datos de la API ESIOS
 df = Etl_Esios.get_df_esios("Valor (€/kWh)")
@@ -54,20 +54,22 @@ Aemet_df['fecha'] = pd.to_datetime(Aemet_df['fecha']).dt.date
 df_final = pd.merge(Esios_df, Aemet_df, on=['provincia', 'fecha', 'hora', 'día de la semana', 'mes'], how='outer')
 df_final['consumo'] = df_final['consumo'].apply(lambda x: np.random.randint(1000, 3000) if pd.isnull(x) else x)
 df_final = df_final.sort_values(by=['provincia','fecha','hora'])
+df_final['tmed'] = pd.to_numeric(df_final['tmed'], errors='coerce')
+df_final = df_final.dropna(subset=['tmed'])
 df_final = df_final.groupby(['fecha','provincia']).agg({'consumo':'sum','tmed':'mean'}).reset_index()
 df_final.rename(columns={'consumo':'consumo_total','tmed':'temperatura_media'},inplace=True)
 Etl_Esios.set_path(path_energy)
 Etl_Esios.save_data(df_final, path_energy)
 
 #Análisis Exploratorio (EDA)
-Analisis.data_load(path_esios)
+"""Analisis.data_load(path_esios)
 Analisis.hourly_distribution()
 Analisis.comparative_type()
 Analisis.consumption_by_region()
 Analisis.evolucion_mensual()
 
 #Estadística
-GI.show()
+GI.show()"""
 
 
 
