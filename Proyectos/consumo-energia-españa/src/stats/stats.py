@@ -8,6 +8,7 @@ class AnalisisConsumoTemperatura(AnalisisDatos):
     
     def __init__(self, path_csv):
         self.df = pd.read_csv(path_csv)
+        self.df.dropna(inplace=True)
     
     def calculate_consumption_statistics(self):
         consumo_promedio = self.df['consumo'].mean()
@@ -33,7 +34,7 @@ class AnalisisConsumoTemperatura(AnalisisDatos):
         r2 = modelo.score(X, y)
         return r2
 
-    def ajustar_regresion_lineal(self):
+    def fit_linear_regression(self):
         X = self.df[['tmed']] 
         y = self.df['consumo'] 
 
