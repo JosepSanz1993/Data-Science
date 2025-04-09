@@ -19,8 +19,8 @@ values = ["fecha","tmed","provincia"]
 # Crear una instancia de las clases
 Etl_Esios = ETL(None,path_esios)
 Etl_Aemet = ETL((init,final,days),path_aemet)
-#Analisis = AnalisisConsumo()
-#GI = GraphicInterface() 
+Analisis = AnalisisConsumo()
+GI = GraphicInterface() 
 
 # Extraer los datos de la API ESIOS
 df = Etl_Esios.get_df_esios("Valor (€/kWh)")
@@ -62,14 +62,14 @@ Etl_Esios.set_path(path_energy)
 Etl_Esios.save_data(df_final, path_energy)
 
 #Análisis Exploratorio (EDA)
-"""Analisis.data_load(path_esios)
+Analisis.data_load(path_esios)
 Analisis.hourly_distribution()
 Analisis.comparative_type()
 Analisis.consumption_by_region()
 Analisis.evolucion_mensual()
 
 #Estadística
-GI.show()"""
+GI.show()
 
 
 

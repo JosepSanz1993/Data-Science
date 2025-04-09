@@ -2,3 +2,6 @@ requests
 pandas
 sklearn
 numpy
+tkinter
+scipy 
+seaborn
