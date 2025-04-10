@@ -128,8 +128,10 @@ python src/main.py
 - Incluye 3 visualizaciones obligatorias:
   - Línea de consumo diario
   - Mapa de consumo por comunidad autónoma
+  - Mapa de consumo por provincia
+  - Mapa de temperatura media por provincia
+  - Mapa de temperatura media por comuniad autónoma.
   - Dispersión de consumo vs temperatura
-- Añade conclusiones y KPIs arriba.
 - Exporta el archivo y guárdalo en `dashboards/`.
 
 ### Paso 6: Pipeline ejecutable

@@ -62,7 +62,7 @@ Etl_Esios.set_path(path_energy)
 Etl_Esios.save_data(df_final, path_energy)
 
 #Análisis Exploratorio (EDA)
-Analisis.data_load(path_esios)
+Analisis.data_load(path_pre_esios)
 Analisis.hourly_distribution()
 Analisis.comparative_type()
 Analisis.consumption_by_region()

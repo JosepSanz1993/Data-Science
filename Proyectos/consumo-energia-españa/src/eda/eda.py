@@ -22,6 +22,7 @@ class AnalisisConsumo(ConsumoInterface):
     
     def hourly_distribution(self):
         consumo_horario = self.df.groupby('hora')['consumo'].mean()
+        print(consumo_horario)
         plt.figure(figsize=(10, 5))
         plt.plot(consumo_horario.index, consumo_horario.values, marker='o')
         plt.title("Distribución horaria del consumo eléctrico")
