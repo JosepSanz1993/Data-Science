@@ -1,0 +1,11 @@
+polares
+numpy
+scikit-learn
+psutil
+dash
+plotly
+flask
+sqlalchemy
+pymongo
+influxdb
+joblib

@@ -1,0 +1,1 @@
+OUTPUT_PATH_SIMULATED = "data/raw/simulated_data.json"

@@ -1,0 +1,12 @@
+{"timestamp": "2025-04-16T15:23:43.752709", "cpu_usage": 65.77, "ram_usage": 64.3, "disk_usage": 89.23, "temperature": 62.26, "network_latency": 34.92, "error_code": "OK"}
+{"timestamp": "2025-04-16T15:23:48.753976", "cpu_usage": 34.16, "ram_usage": 58.31, "disk_usage": 85.9, "temperature": 61.03, "network_latency": 155.02, "error_code": "OK"}
+{"timestamp": "2025-04-16T15:23:53.759318", "cpu_usage": 40.94, "ram_usage": 86.99, "disk_usage": 37.15, "temperature": 69.79, "network_latency": 31.57, "error_code": "CRIT"}
+{"timestamp": "2025-04-16T15:23:58.764738", "cpu_usage": 59.71, "ram_usage": 29.15, "disk_usage": 83.15, "temperature": 34.9, "network_latency": 129.39, "error_code": "ERR"}
+{"timestamp": "2025-04-16T15:24:03.766804", "cpu_usage": 91.11, "ram_usage": 78.81, "disk_usage": 90.23, "temperature": 62.99, "network_latency": 167.16, "error_code": "CRIT"}
+{"timestamp": "2025-04-16T15:24:08.772207", "cpu_usage": 50.26, "ram_usage": 81.99, "disk_usage": 52.36, "temperature": 59.37, "network_latency": 182.89, "error_code": "ERR"}
+{"timestamp": "2025-04-16T15:24:13.776960", "cpu_usage": 72.41, "ram_usage": 50.3, "disk_usage": 59.01, "temperature": 70.18, "network_latency": 82.31, "error_code": "OK"}
+{"timestamp": "2025-04-16T15:24:18.777888", "cpu_usage": 72.82, "ram_usage": 37.65, "disk_usage": 98.65, "temperature": 38.72, "network_latency": 48.3, "error_code": "OK"}
+{"timestamp": "2025-04-16T15:24:23.782389", "cpu_usage": 84.18, "ram_usage": 84.86, "disk_usage": 48.52, "temperature": 42.17, "network_latency": 162.37, "error_code": "CRIT"}
+{"timestamp": "2025-04-16T15:24:28.784304", "cpu_usage": 59.78, "ram_usage": 28.05, "disk_usage": 93.38, "temperature": 35.92, "network_latency": 176.86, "error_code": "ERR"}
+{"timestamp": "2025-04-16T15:24:33.787210", "cpu_usage": 61.03, "ram_usage": 56.67, "disk_usage": 31.67, "temperature": 55.3, "network_latency": 52.56, "error_code": "ERR"}
+{"timestamp": "2025-04-16T15:24:38.790713", "cpu_usage": 18.07, "ram_usage": 25.08, "disk_usage": 92.02, "temperature": 69.15, "network_latency": 9.81, "error_code": "WARN"}
