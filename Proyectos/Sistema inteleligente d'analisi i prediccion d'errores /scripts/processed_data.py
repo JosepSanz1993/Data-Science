@@ -26,7 +26,12 @@ class processed:
         return df 
     
     def save_processed_data(self,df, output_path):
-        df.write_parquet(output_path)
+        with open(output_path, "w") as f:
+            for row in df.to_dicts():
+                if isinstance(row["timestamp_parsed"], datetime):
+                    row["timestamp_parsed"] = row["timestamp_parsed"].isoformat()
+                json.dump(row, f)
+                f.write("\n")
         print(f"Datos procesados guardados a: {output_path}")
 
         
