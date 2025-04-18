@@ -11,3 +11,4 @@ influxdb
 joblib
 matplotlib
 seaborn
+tensorflow
