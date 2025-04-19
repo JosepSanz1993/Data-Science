@@ -21,7 +21,8 @@ class processed:
         pl.col("ram_usage").cast(pl.Float64),
         pl.col("disk_usage").cast(pl.Float64),
         pl.col("temperature").cast(pl.Float64),
-        pl.col("network_latency").cast(pl.Float64)])
+        pl.col("network_latency").cast(pl.Float64),
+        pl.when(pl.col("cpu_usage")>90).then(1).otherwise(0).alias("anomaly")])
         df = df.drop()
         return df 
     
