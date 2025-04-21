@@ -6,6 +6,7 @@ from models.Autoencoders.Auto import Auto
 from models.Random_Forest.random_model import Random_F
 from models.MLP.mlp import MLP
 from models.SVM.svm import SVM
+from bd.mongo_db import MongoDB
 
 #librerias
 sim = simulate()
@@ -15,6 +16,7 @@ A = Auto(OUTPUT_PATH_PROCESSED)
 RF = Random_F(OUTPUT_PATH_PROCESSED)
 mlp = MLP(OUTPUT_PATH_PROCESSED)
 svm = SVM(OUTPUT_PATH_PROCESSED)
+mongo = MongoDB(MONGO_DB_URI, MONGO_DB_NAME)
 
 if __name__ == "__main__":
     #Simulamos los datos
