@@ -20,7 +20,7 @@ class AutoencoderResultDocument(TrainingResultDocument):
             "parameters": parameters,
             "metrics": {
                 "classification_report": report if report else None,
-                "mse": self.mse
+                "mse": self.mse.tolist()
             },
             "saved_model": saved_model_path,
             "saved_scaler": saved_scaler_path

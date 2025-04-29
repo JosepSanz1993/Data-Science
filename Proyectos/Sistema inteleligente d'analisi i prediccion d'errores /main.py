@@ -40,7 +40,7 @@ if __name__ == "__main__":
     mongo.connect()
 
     #Modelo Autoencoders
-    """modelo,y_test,y_pred, parameters,mse = A.train_model()
+    modelo,y_test,y_pred, parameters,mse = A.train_model()
     A.save_model(modelo,AUTOENCODER_MODEL_RESULT)
     auto_docu = AutoencoderResultDocument(mse)
     docu = auto_docu.generate(modelo, y_test, y_pred, parameters, AUTOENCODER_MODEL_RESULT, None)
@@ -71,4 +71,4 @@ if __name__ == "__main__":
     mongo.insert_data("svm_results", docu)
 
     #Cerramos la conexión a la base de datos
-    mongo.client.close()"""
+    mongo.client.close()

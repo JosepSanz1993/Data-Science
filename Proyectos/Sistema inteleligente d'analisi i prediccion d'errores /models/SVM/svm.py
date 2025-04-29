@@ -5,10 +5,11 @@ from sklearn.preprocessing import MinMaxScaler
 import joblib
 from scripts.var_constant import SCALER_SVM_RESULT
 from models.model.model import model_train
-
+from imblearn.over_sampling import SMOTE
 class SVM(model_train):
     def __init__(self,path):
         self.__df = self.load_data(path)
+        self.smote = SMOTE(random_state=42,k_neighbors=1)
 
     def train_model(self):
         #Preprosesamianto de datos
@@ -23,9 +24,12 @@ class SVM(model_train):
         X_scaled = scaler.fit_transform(X)
         joblib.dump(scaler, SCALER_SVM_RESULT)
 
+        # Aplicar SMOTE para balancear las clases
+        X_resampled, y_resampled = self.smote.fit_resample(X_scaled, y)
+
         #Entrar modelo con SVM
-        X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
-        model = SVC(kernel="rbf", C=1.0, gamma="scale", probability=True)
+        X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.2, random_state=42,stratify=y_resampled)
+        model = SVC(kernel="rbf", C=1.0, gamma="scale", probability=True,class_weight="balanced")
         parameters = {
             "kernel": "rbf",
             "C": 1.0,
