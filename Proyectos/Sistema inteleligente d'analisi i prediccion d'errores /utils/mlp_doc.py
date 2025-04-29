@@ -6,7 +6,7 @@ class MLPResultDocument(TrainingResultDocument):
     def __init__(self):
         self.model_name = "MLPClassifier"
 
-    def generate(self, model, y_test, y_pred, parameters, saved_model_path, saved_scaler_path=None):
+    def generate(self, model, y_test, y_pred, parameters, saved_model_path, saved_scaler_path):
         acc = accuracy_score(y_test, y_pred)
         report = classification_report(y_test, y_pred, output_dict=True)
 

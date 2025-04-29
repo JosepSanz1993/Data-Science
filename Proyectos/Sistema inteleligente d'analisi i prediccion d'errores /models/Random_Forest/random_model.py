@@ -24,6 +24,10 @@ class Random_F(model_train):
         #Entrar modelo con Random Forest
         X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
         model = RandomForestClassifier(n_estimators=100, random_state=42)
+        parameters = {
+            "n_estimators": 100,
+            "random_state": 42
+        }
         model.fit(X_train, y_train)
 
         #Realizar Predicciones
@@ -33,5 +37,5 @@ class Random_F(model_train):
         print(confusion_matrix(y_test, y_pred))
         print(classification_report(y_test, y_pred))
 
-        return model
+        return model,y_test,y_pred,parameters
 

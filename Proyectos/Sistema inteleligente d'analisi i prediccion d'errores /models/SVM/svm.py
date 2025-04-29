@@ -18,12 +18,20 @@ class SVM(model_train):
         X = features
         y = labels
         scaler = MinMaxScaler()
+    
+        # Normalizar los datos
         X_scaled = scaler.fit_transform(X)
         joblib.dump(scaler, SCALER_SVM_RESULT)
 
         #Entrar modelo con SVM
         X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
         model = SVC(kernel="rbf", C=1.0, gamma="scale", probability=True)
+        parameters = {
+            "kernel": "rbf",
+            "C": 1.0,
+            "gamma": "scale",
+            "probability": True
+        }
         model.fit(X_train, y_train)
         
         #Realizar Predicciones
@@ -33,4 +41,4 @@ class SVM(model_train):
         print(confusion_matrix(y_test, y_pred))
         print(classification_report(y_test, y_pred))
         
-        return model
+        return model,y_test,y_pred,parameters
