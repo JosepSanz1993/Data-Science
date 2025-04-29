@@ -13,13 +13,18 @@ class Insolation(model_train):
         X_train, X_test = train_test_split(X, test_size=0.2, random_state=42)
         #Crear el modelo
         model = IsolationForest(contamination=0.05, random_state=42)
+        parameters = {
+            "contamination": 0.05,
+            "random_state": 42
+        }
         #Entrenar modelo
         model.fit(X_train)
         #Realizar la prediccion con X_test
         y_pred = model.predict(X_test)
         #Convertir las predicciones a un formato comprensible (1 para normal, -1 para anomalia)
         y_pred = ["Normal" if label == 1 else "Anomaly" for label in y_pred]
+        y_test = ["Normal"] * len(y_pred)
         #Mostrar la classificacion
         print(classification_report(["Normal"] * len(X_test), y_pred))
-        return model
+        return model,y_test,y_pred,parameters
 

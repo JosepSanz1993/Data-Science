@@ -15,6 +15,13 @@ class Auto(model_train):
         X_train, X_test = train_test_split(X, test_size=0.2, random_state=42)
         #Crear el modelo
         model = MLPRegressor(hidden_layer_sizes=(8, 4, 8),activation='relu',solver='adam',max_iter=200,random_state=42)
+        parameters = {
+            "hidden_layer_sizes": (8, 4, 8),
+            "activation": "relu",
+            "solver": "adam",
+            "max_iter": 200,
+            "random_state": 42
+        }
         #Entrenar modelo
         model.fit(X_train, X_train)
         #Realizar la prediccion con X_test
@@ -26,4 +33,4 @@ class Auto(model_train):
         y_true = ["Normal"] * len(y_pred)
         #Mostrar la classificacion
         print(classification_report(y_true, y_pred))
-        return model
+        return model,y_true,y_pred,parameters

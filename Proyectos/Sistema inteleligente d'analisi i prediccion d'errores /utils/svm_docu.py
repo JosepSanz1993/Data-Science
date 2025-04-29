@@ -2,9 +2,9 @@ from datetime import datetime
 from sklearn.metrics import accuracy_score, classification_report
 from utils.generate_docu import TrainingResultDocument
 
-class RandomForestResultDocument(TrainingResultDocument):
+class SVMResultDocument(TrainingResultDocument):
     def __init__(self):
-        self.model_name = "RandomForestClassifier"
+        self.model_name = "SVM"
 
     def generate(self, model, y_test, y_pred, parameters, saved_model_path, saved_scaler_path=None):
         acc = accuracy_score(y_test, y_pred)
@@ -12,13 +12,14 @@ class RandomForestResultDocument(TrainingResultDocument):
 
         return {
             "model_name": self.model_name,
-            "timestamp": datetime.isoformat(datetime.now()),
+            "timestamp": datetime.now().isoformat(),
             "parameters": parameters,
             "metrics": {
                 "accuracy": acc,
                 "classification_report": report,
-                "n_estimators": getattr(model, 'n_estimators', None),
-                "max_depth": getattr(model, 'max_depth', None)
+                "kernel": getattr(model, 'kernel', None),
+                "C": getattr(model, 'C', None),
+                "gamma": getattr(model, 'gamma', None)
             },
             "saved_model": saved_model_path,
             "saved_scaler": saved_scaler_path

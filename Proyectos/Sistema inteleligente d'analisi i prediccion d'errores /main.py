@@ -7,7 +7,8 @@ from models.Random_Forest.random_model import Random_F
 from models.MLP.mlp import MLP
 from models.SVM.svm import SVM
 from bd.mongo_db import MongoDB
-
+from utils.auto_docu import AutoencoderResultDocument
+from utils.insolation_forest_docu import InsolationResultDocument
 #librerias
 sim = simulate()
 pro = processed()
@@ -16,6 +17,8 @@ A = Auto(OUTPUT_PATH_PROCESSED)
 RF = Random_F(OUTPUT_PATH_PROCESSED)
 mlp = MLP(OUTPUT_PATH_PROCESSED)
 svm = SVM(OUTPUT_PATH_PROCESSED)
+auto_docu = AutoencoderResultDocument()
+iso_doc = InsolationResultDocument()
 mongo = MongoDB(MONGO_DB_URI, MONGO_DB_NAME)
 
 if __name__ == "__main__":
@@ -28,13 +31,15 @@ if __name__ == "__main__":
     pro.save_processed_data(df,OUTPUT_PATH_PROCESSED)
 
     #Modelo Autoencoders
-    modelo = A.train_model()
+    modelo,y_test,y_pred, parameters = A.train_model()
     A.save_model(modelo,AUTOENCODER_MODEL_RESULT)
+    docu = auto_docu.generate(modelo, y_test, y_pred, parameters, AUTOENCODER_MODEL_RESULT, None)
 
     #Modelo insolation
-    modelo = In.train_model()
+    modelo,y_test,y_pred,parameters = In.train_model()
     In.save_model(modelo,INSOLATION_MODEL_RESULT)
-
+    docu = iso_doc.generate(modelo, y_test, y_pred, parameters, INSOLATION_MODEL_RESULT, None)
+    
     #Modelo Random Forest
     modelo = RF.train_model()
     RF.save_model(modelo,RANDOM_FOREST_MODEL_RESULT)

@@ -2,7 +2,7 @@ polares
 numpy
 scikit-learn
 psutil
-dash
+streamlit
 plotly
 flask
 sqlalchemy
