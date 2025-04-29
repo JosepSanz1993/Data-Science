@@ -21,7 +21,7 @@ class MongoDB:
             print(f"MongoDB connection failed: {e}")
 
     def insert_data(self, collection_name, data):
-        if self.db:
+        if self.db is not None:
             collection = self.db[collection_name]
             result = collection.insert_one(data)
             print(f"Data inserted with id: {result.inserted_id}")

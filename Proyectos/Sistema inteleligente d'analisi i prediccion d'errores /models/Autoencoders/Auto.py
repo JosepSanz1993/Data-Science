@@ -33,4 +33,4 @@ class Auto(model_train):
         y_true = ["Normal"] * len(y_pred)
         #Mostrar la classificacion
         print(classification_report(y_true, y_pred))
-        return model,y_true,y_pred,parameters
+        return model,y_true,y_pred,parameters,mse

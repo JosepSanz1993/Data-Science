@@ -21,7 +21,6 @@ A = Auto(OUTPUT_PATH_PROCESSED)
 RF = Random_F(OUTPUT_PATH_PROCESSED)
 mlp = MLP(OUTPUT_PATH_PROCESSED)
 svm = SVM(OUTPUT_PATH_PROCESSED)
-auto_docu = AutoencoderResultDocument()
 iso_doc = IsolationForestResultDocument()
 mlp_doc = MLPResultDocument()
 svm_doc = SVMResultDocument()
@@ -30,19 +29,20 @@ mongo = MongoDB(MONGO_DB_URI, MONGO_DB_NAME)
 
 if __name__ == "__main__":
     #Simulamos los datos
-    sim.simulate_data()
+    #sim.simulate_data()
 
     #Processamiento de datos
-    df = pro.data_load(OUTPUT_PATH_SIMULATED)
-    df = pro.preprocess_data(df)
-    pro.save_processed_data(df,OUTPUT_PATH_PROCESSED)
+    #df = pro.data_load(OUTPUT_PATH_SIMULATED)
+    #df = pro.preprocess_data(df)
+    #pro.save_processed_data(df,OUTPUT_PATH_PROCESSED)
 
     #Conexión a la base de datos
     mongo.connect()
 
     #Modelo Autoencoders
-    modelo,y_test,y_pred, parameters = A.train_model()
+    """modelo,y_test,y_pred, parameters,mse = A.train_model()
     A.save_model(modelo,AUTOENCODER_MODEL_RESULT)
+    auto_docu = AutoencoderResultDocument(mse)
     docu = auto_docu.generate(modelo, y_test, y_pred, parameters, AUTOENCODER_MODEL_RESULT, None)
     mongo.insert_data("autoencoder_results", docu)
 
@@ -69,6 +69,6 @@ if __name__ == "__main__":
     svm.save_model(modelo,SVM_MODEL_RESULT)
     docu = svm_doc.generate(modelo, y_test, y_pred,parameters, SVM_MODEL_RESULT, SCALER_SVM_RESULT)
     mongo.insert_data("svm_results", docu)
-    
+
     #Cerramos la conexión a la base de datos
-    mongo.client.close()
+    mongo.client.close()"""

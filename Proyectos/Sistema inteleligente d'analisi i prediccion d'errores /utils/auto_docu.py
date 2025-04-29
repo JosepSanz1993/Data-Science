@@ -3,8 +3,9 @@ from sklearn.metrics import classification_report, mean_squared_error
 from utils.generate_docu import TrainingResultDocument
 
 class AutoencoderResultDocument(TrainingResultDocument):
-    def __init__(self):
+    def __init__(self,mse):
         self.model_name = "Autoencoder"
+        self.mse = mse
 
     def generate(self, model, y_test, y_pred, parameters, saved_model_path, saved_scaler_path=None):
         # Si es tracta de detecció d’anomalies, y_test i y_pred poden ser 0/1 o 1/-1
@@ -13,16 +14,13 @@ class AutoencoderResultDocument(TrainingResultDocument):
         except Exception:
             report = {}
 
-        # MSE de reconstrucció si aplica
-        mse = mean_squared_error(y_test, y_pred) if y_test is not None else None
-
         return {
             "model_name": self.model_name,
             "timestamp": datetime.now().isoformat(),
             "parameters": parameters,
             "metrics": {
                 "classification_report": report if report else None,
-                "mse": mse
+                "mse": self.mse
             },
             "saved_model": saved_model_path,
             "saved_scaler": saved_scaler_path
