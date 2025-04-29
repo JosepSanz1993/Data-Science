@@ -37,27 +37,38 @@ if __name__ == "__main__":
     df = pro.preprocess_data(df)
     pro.save_processed_data(df,OUTPUT_PATH_PROCESSED)
 
+    #Conexión a la base de datos
+    mongo.connect()
+
     #Modelo Autoencoders
     modelo,y_test,y_pred, parameters = A.train_model()
     A.save_model(modelo,AUTOENCODER_MODEL_RESULT)
     docu = auto_docu.generate(modelo, y_test, y_pred, parameters, AUTOENCODER_MODEL_RESULT, None)
+    mongo.insert_data("autoencoder_results", docu)
 
     #Modelo insolation
     modelo,y_test,y_pred,parameters = In.train_model()
     In.save_model(modelo,INSOLATION_MODEL_RESULT)
     docu = iso_doc.generate(modelo, y_test, y_pred, parameters, INSOLATION_MODEL_RESULT, None)
+    mongo.insert_data("isolation_forest_results", docu)
 
     #Modelo Random Forest
     modelo,y_test,y_pred,parameters = RF.train_model()
     RF.save_model(modelo,RANDOM_FOREST_MODEL_RESULT)
     docu = rand_doc.generate(modelo, y_test, y_pred, parameters, RANDOM_FOREST_MODEL_RESULT, SCALER_RANDOM_FOREST_RESULT)
+    mongo.insert_data("random_forest_results", docu)
 
     #Modelo MLP
     modelo,y_test,y_pred,parameters = mlp.train_model()
     mlp.save_model(modelo,MLP_MODEL_RESULT)
     docu = mlp_doc.generate(modelo, y_test, y_pred, parameters, MLP_MODEL_RESULT,SCALER_MLP_RESULT)
+    mongo.insert_data("mlp_results", docu)
 
     #Modelo SVM
     modelo,y_test,y_pred,parameters = svm.train_model()
     svm.save_model(modelo,SVM_MODEL_RESULT)
     docu = svm_doc.generate(modelo, y_test, y_pred,parameters, SVM_MODEL_RESULT, SCALER_SVM_RESULT)
+    mongo.insert_data("svm_results", docu)
+    
+    #Cerramos la conexión a la base de datos
+    mongo.client.close()
