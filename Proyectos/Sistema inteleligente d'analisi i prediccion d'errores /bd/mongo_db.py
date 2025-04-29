@@ -29,7 +29,7 @@ class MongoDB:
             print("Database not connected.")
 
     def find_data(self, collection_name, query):
-        if self.db:
+        if self.db is not None:
             collection = self.db[collection_name]
             result = collection.find(query)
             return list(result)
@@ -38,7 +38,7 @@ class MongoDB:
             return None
         
     def update_data(self, collection_name, query, new_values):
-        if self.db:
+        if self.db is not None: 
             collection = self.db[collection_name]
             result = collection.update_one(query, {'$set': new_values})
             print(f"Matched {result.matched_count} documents and modified {result.modified_count} documents.")
@@ -46,7 +46,7 @@ class MongoDB:
             print("Database not connected.")
 
     def delete_data(self, collection_name, query):  
-        if self.db:
+        if self.db is not None:
             collection = self.db[collection_name]
             result = collection.delete_one(query)
             print(f"Deleted {result.deleted_count} documents.")
@@ -54,7 +54,7 @@ class MongoDB:
             print("Database not connected.")
 
     def get_all_data(self, collection_name):
-        if self.db:
+        if self.db is not None:
             collection = self.db[collection_name]
             result = collection.find()
             return list(result)
@@ -63,7 +63,7 @@ class MongoDB:
             return None
         
     def get_data_by_id(self, collection_name, object_id):
-        if self.db:
+        if self.db is not None:
             collection = self.db[collection_name]
             result = collection.find_one({"_id": ObjectId(object_id)})
             return result
@@ -72,7 +72,7 @@ class MongoDB:
             return None
         
     def delete_all_data(self, collection_name):
-        if self.db:
+        if self.db is not None:
             collection = self.db[collection_name]
             result = collection.delete_many({})
             print(f"Deleted {result.deleted_count} documents.")

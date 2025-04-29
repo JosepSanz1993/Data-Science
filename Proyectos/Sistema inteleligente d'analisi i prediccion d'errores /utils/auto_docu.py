@@ -1,5 +1,5 @@
 from datetime import datetime
-from sklearn.metrics import classification_report, mean_squared_error
+from sklearn.metrics import classification_report
 from utils.generate_docu import TrainingResultDocument
 
 class AutoencoderResultDocument(TrainingResultDocument):
