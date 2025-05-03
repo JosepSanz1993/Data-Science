@@ -10,6 +10,7 @@ from utils.auto_docu import AutoencoderResultDocument
 from utils.insolation_forest_docu import IsolationForestResultDocument
 from utils.mlp_doc import MLPResultDocument
 from utils.random_forest_docu import RandomForestResultDocument
+import os
 
 #librerias
 sim = simulate()
@@ -61,4 +62,7 @@ if __name__ == "__main__":
     mongo.insert_data("mlp_results", docu)
 
     #Cerramos la conexión a la base de datos
-    mongo.client.close()
+    mongo.close()
+
+    #Iniciamos la app ejecutando el script de la app
+    os.system("streamlit run dashboard/pages/mean.py")
