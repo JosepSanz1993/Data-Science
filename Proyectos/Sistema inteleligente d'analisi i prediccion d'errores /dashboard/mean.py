@@ -8,6 +8,22 @@ st.set_page_config(
 
 st.title("🧠 Intelligent System for Error Analysis and Prediction")
 
+st.sidebar.title("Navegació")
+page = st.sidebar.radio("Ves a la pàgina:", [
+    "Auto", "Insolation", "mean", "Random", "Mlp"
+])
+
+if page == "Auto":
+    st.switch_page("Auto.py")
+elif page == "Insolation":
+    st.switch_page("Insolation.py")
+elif page == "mean":
+    st.switch_page("mean.py")
+elif page == "Random":
+    st.switch_page("Random.py")
+elif page == "Mlp":
+    st.switch_page("Mlp.py")
+
 st.markdown("""
 ## Welcome
 

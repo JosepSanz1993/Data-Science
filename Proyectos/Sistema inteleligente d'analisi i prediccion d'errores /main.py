@@ -26,12 +26,12 @@ mongo = MongoDB(MONGO_DB_URI, MONGO_DB_NAME)
 
 if __name__ == "__main__":
     #Simulamos los datos
-    sim.simulate_data()
+    """sim.simulate_data()
 
     #Processamiento de datos
     df = pro.data_load(OUTPUT_PATH_SIMULATED)
     df = pro.preprocess_data(df)
-    pro.save_processed_data(df,OUTPUT_PATH_PROCESSED)
+    pro.save_processed_data(df,OUTPUT_PATH_PROCESSED)"""
 
     #Conexión a la base de datos
     mongo.connect()
@@ -65,4 +65,4 @@ if __name__ == "__main__":
     mongo.close()
 
     #Iniciamos la app ejecutando el script de la app
-    os.system("streamlit run dashboard/pages/mean.py")
+    os.system("streamlit run dashboard/mean.py")

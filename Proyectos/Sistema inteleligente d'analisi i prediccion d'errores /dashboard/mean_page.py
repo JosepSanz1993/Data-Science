@@ -1,5 +1,5 @@
-from dashboard.pages.mean import st
-from constant import *
+import streamlit as st
+from dashboard.constant import *
 import pandas as pd
 class MeanPage:
     def make_eyelashes(self,data):
