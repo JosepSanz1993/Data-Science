@@ -65,4 +65,4 @@ if __name__ == "__main__":
     mongo.close()
 
     #Iniciamos la app ejecutando el script de la app
-    os.system("streamlit run dashboard/mean.py")
+    os.system("streamlit run mean.py")
