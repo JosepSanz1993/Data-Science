@@ -5,6 +5,8 @@ st.set_page_config(
     page_icon="🧠",
     layout="wide"
 )
+if st.button("EXIT"):
+    st.stop()
 
 st.title("🧠 Intelligent System for Error Analysis and Prediction")
 st.markdown("""

@@ -10,6 +10,7 @@ from utils.auto_docu import AutoencoderResultDocument
 from utils.insolation_forest_docu import IsolationForestResultDocument
 from utils.mlp_doc import MLPResultDocument
 from utils.random_forest_docu import RandomForestResultDocument
+from utils.dash.windows import TimeIntervalWindow
 import os
 
 #librerias
@@ -23,10 +24,15 @@ iso_doc = IsolationForestResultDocument()
 mlp_doc = MLPResultDocument()
 rand_doc = RandomForestResultDocument()
 mongo = MongoDB(MONGO_DB_URI, MONGO_DB_NAME)
+window = TimeIntervalWindow()
 
 if __name__ == "__main__":
+
+    #input Data
+    second, interval = window.get_inputs()
+    
     #Simulamos los datos
-    sim.simulate_data()
+    sim.simulate_data(second,interval)
 
     #Processamiento de datos
     df = pro.data_load(OUTPUT_PATH_SIMULATED)

@@ -16,7 +16,7 @@ class simulate:
             "network_latency": round(random.uniform(1, 200), 2),
             "error_code": random.choice(["OK", "WARN", "ERR", "CRIT"])
         }
-    def simulate_data(self,duration_seconds=60, interval=5):
+    def simulate_data(self,duration_seconds, interval):
         os.makedirs(os.path.dirname(OUTPUT_PATH_SIMULATED), exist_ok=True)
         with open(OUTPUT_PATH_SIMULATED, "w") as f:
             for _ in range(0, duration_seconds, interval):
