@@ -22,7 +22,6 @@ class simulate:
             for _ in range(0, duration_seconds, interval):
                 sample = self.generate_sample()
                 f.write(json.dumps(sample) + "\n")
-                print("Generated:", sample)
                 time.sleep(interval)
 
 

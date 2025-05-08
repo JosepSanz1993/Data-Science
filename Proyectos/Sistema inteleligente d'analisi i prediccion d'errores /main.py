@@ -11,6 +11,7 @@ from utils.insolation_forest_docu import IsolationForestResultDocument
 from utils.mlp_doc import MLPResultDocument
 from utils.random_forest_docu import RandomForestResultDocument
 from utils.dash.windows import TimeIntervalWindow
+from utils.cron.Cron3D import Cron3D
 import os
 
 #librerias
@@ -32,7 +33,10 @@ if __name__ == "__main__":
     second, interval = window.get_inputs()
     
     #Simulamos los datos
+    cron = Cron3D(second, interval)
+    cron.start()
     sim.simulate_data(second,interval)
+    cron.join()
 
     #Processamiento de datos
     df = pro.data_load(OUTPUT_PATH_SIMULATED)
