@@ -6,7 +6,7 @@ class TimeIntervalWindow:
         self.time = None
         self.intervals = None
         self.root = tk.Tk()
-        self.root.title("Introdueix els valors")
+        self.root.title("INPUT DATA")
         self.root.geometry("250x150")
         self.create_widgets()
 
@@ -26,8 +26,9 @@ class TimeIntervalWindow:
     def submit(self):
         self.time = self.time_var.get()
         self.intervals = self.intervals_var.get()
-        self.root.quit()   # Tanca el bucle principal
-        self.root.destroy()  # Destrueix la finestra
+        self.root.quit()   
+        self.root.destroy()
+
 
     def get_inputs(self):
         self.root.mainloop()
