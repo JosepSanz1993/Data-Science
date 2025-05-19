@@ -1,9 +1,10 @@
 import streamlit as st
 from utils.dash.constant import *
 import pandas as pd
+import matplotlib.pyplot as plt
 class MeanPage:
     def make_eyelashes(self,data):
-        tab1, tab2 = st.tabs(TABS)
+        tab1, tab2, tab3 = st.tabs(TABS)
         with tab1:
             st.title(f"Results of {data[0]['model_name']}")
             st.write(f"Timestamp: {data[0]['timestamp']}")
@@ -32,5 +33,20 @@ class MeanPage:
             elif data[0]['model_name'] == "RandomForestClassifier":
                 st.write(f"n_estimators: {data[0]['metrics']['n_estimators']}")
 
-
-           
+        with tab3:
+            st.subheader("Graphs")
+            model_name = data[0]['model_name']
+            report = data[0]['metrics']['classification_report']
+            if isinstance(report, dict):
+                df_report = pd.DataFrame(report).transpose()
+                df_report = df_report.drop(['accuracy'], errors='ignore') 
+                df_plot = df_report[['precision', 'recall', 'f1-score']]
+                st.markdown("### Precision, Recall i F1-Score per classe")
+                st.bar_chart(df_plot)
+                
+            if model_name == "Autoencoder":
+                st.markdown("### Evolució del MSE per mostra")
+                mse = data[0]['metrics'].get('mse', [])
+                if mse:
+                    mse_df = pd.DataFrame({'MSE': mse})
+                    st.line_chart(mse_df)

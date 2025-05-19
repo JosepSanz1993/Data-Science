@@ -16,7 +16,7 @@ class show_sim:
 
         with st.form("config_form"):
             st.subheader("⚙️ Siluamotor configuration")
-            duration = st.slider("Total Time (seconds)", min_value=1, max_value=5000, value=5)
+            duration = st.slider("Total Time (seconds)", min_value=1, max_value=5000, value=1)
             interval = st.slider("Interval with samplers (seconds)", min_value=1, max_value=10, value=1)
             submitted = st.form_submit_button("Start Simulation")
 

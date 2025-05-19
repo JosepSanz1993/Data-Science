@@ -1,1 +1,1 @@
-TABS = ["Data", "Results and Metrics"]
+TABS = ["Data", "Results and Metrics","Graphs"]
