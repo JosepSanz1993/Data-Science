@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 import os
 from scripts.var_constant import OUTPUT_PATH_SIMULATED
+import streamlit as st
 
 class simulate:
     def generate_sample(self):
@@ -22,6 +23,7 @@ class simulate:
             for _ in range(0, duration_seconds, interval):
                 sample = self.generate_sample()
                 f.write(json.dumps(sample) + "\n")
+                yield sample
                 time.sleep(interval)
 
 

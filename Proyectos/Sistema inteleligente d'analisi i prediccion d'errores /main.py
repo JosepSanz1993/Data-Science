@@ -10,8 +10,7 @@ from utils.auto_docu import AutoencoderResultDocument
 from utils.insolation_forest_docu import IsolationForestResultDocument
 from utils.mlp_doc import MLPResultDocument
 from utils.random_forest_docu import RandomForestResultDocument
-from utils.dash.windows import TimeIntervalWindow
-import os
+import os,subprocess,time,json
 
 #librerias
 sim = simulate()
@@ -24,16 +23,22 @@ iso_doc = IsolationForestResultDocument()
 mlp_doc = MLPResultDocument()
 rand_doc = RandomForestResultDocument()
 mongo = MongoDB(MONGO_DB_URI, MONGO_DB_NAME)
-window = TimeIntervalWindow()
+
 
 if __name__ == "__main__":
 
-    #input Data
-    second, interval = window.get_inputs()
-    
     #Simulamos los datos
-    sim.simulate_data(second,interval)
-
+    if os.path.exists("Status.json"):
+        os.remove("Status.json")
+    process = subprocess.Popen(["streamlit", "run", "show_sim.py"])
+    while True:
+        if os.path.exists("status.json"):
+            with open("status.json") as f:
+                data = json.load(f)
+            if data.get("done"):
+                break
+        time.sleep(1)
+    process.terminate()
 
     #Processamiento de datos
     df = pro.data_load(OUTPUT_PATH_SIMULATED)
