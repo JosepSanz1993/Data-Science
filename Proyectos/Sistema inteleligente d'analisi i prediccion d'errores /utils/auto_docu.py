@@ -8,7 +8,6 @@ class AutoencoderResultDocument(TrainingResultDocument):
         self.mse = mse
 
     def generate(self, model, y_test, y_pred, parameters, saved_model_path, saved_scaler_path=None):
-        # Si es tracta de detecció d’anomalies, y_test i y_pred poden ser 0/1 o 1/-1
         try:
             report = classification_report(y_test, y_pred, output_dict=True)
         except Exception:
