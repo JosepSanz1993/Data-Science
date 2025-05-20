@@ -49,9 +49,9 @@ if __name__ == "__main__":
     mongo.connect()
 
     #Modelo Autoencoders
-    modelo,y_test,y_pred, parameters,mse = A.train_model()
+    modelo,y_test,y_pred, parameters,mse,mae = A.train_model()
     A.save_model(modelo,AUTOENCODER_MODEL_RESULT)
-    auto_docu = AutoencoderResultDocument(mse)
+    auto_docu = AutoencoderResultDocument(mse,mae)
     docu = auto_docu.generate(modelo, y_test, y_pred, parameters, AUTOENCODER_MODEL_RESULT, None)
     mongo.insert_data("autoencoder_results", docu)
 

@@ -22,9 +22,26 @@ class MeanPage:
             report = data[0]["metrics"]['classification_report']
             df = pd.DataFrame(report).transpose()
             st.dataframe(df.style.format(precision=2))
+            st.markdown("Confusion Matrix")
+            confusion_matrix = data[0]['metrics']['confusion_matrix']
+            if confusion_matrix is not None:
+                df_confusion = pd.DataFrame(confusion_matrix)
+                st.dataframe(df_confusion.style.format(precision=2))
+            st.markdown("Precision")
+            st.write(data[0]['metrics']['precision'])
+            st.markdown("Recall")
+            st.write(data[0]['metrics']['recall'])
+            st.markdown("F1 Score")
+            st.write(data[0]['metrics']['f1_score'])
+            st.markdown("ROC AUC")
+            st.write(data[0]['metrics']['roc_auc'])
+            st.markdown("Accuracy")
+            st.write(data[0]['metrics']['accuracy'])
             if data[0]['model_name'] == "Autoencoder":
                 st.markdown("Mean Squared Error")
                 st.line_chart(data[0]['metrics']['mse'])
+                st.markdown("Mean Absolute Error")
+                st.line_chart(data[0]['metrics']['mae'])
             elif data[0]['model_name'] == "IsolationForest":
                 st.write(f"contamination: {data[0]['metrics']['contamination']}")
                 st.write(f"n_estimators: {data[0]['metrics']['n_estimators']}")

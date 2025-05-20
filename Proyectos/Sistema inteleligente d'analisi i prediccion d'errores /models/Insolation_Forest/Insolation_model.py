@@ -1,6 +1,5 @@
 from sklearn.ensemble import IsolationForest
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report
 from models.model.model import model_train
 class Insolation(model_train):
     def __init__(self,input_data):
@@ -24,7 +23,5 @@ class Insolation(model_train):
         #Convertir las predicciones a un formato comprensible (1 para normal, -1 para anomalia)
         y_pred = ["Normal" if label == 1 else "Anomaly" for label in y_pred]
         y_test = ["Normal"] * len(y_pred)
-        #Mostrar la classificacion
-        print(classification_report(["Normal"] * len(X_test), y_pred))
         return model,y_test,y_pred,parameters
 

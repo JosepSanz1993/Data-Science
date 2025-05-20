@@ -1,6 +1,5 @@
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.preprocessing import MinMaxScaler
 import joblib
 from scripts.var_constant import SCALER_MLP_RESULT
@@ -36,10 +35,5 @@ class MLP(model_train):
         model.fit(X_train, y_train)
         
         #Realizar Predicciones
-        y_pred = model.predict(X_test)
-        
-        #Mostrar resultados
-        print(confusion_matrix(y_test, y_pred))
-        print(classification_report(y_test, y_pred))
-        
+        y_pred = model.predict(X_test)        
         return model,y_test,y_pred,parameters

@@ -1,7 +1,6 @@
 import joblib
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.preprocessing import MinMaxScaler
 from models.model.model import model_train
 from scripts.var_constant import SCALER_RANDOM_FOREST_RESULT
@@ -11,7 +10,7 @@ class Random_F(model_train):
         self.__df = self.load_data(input_data)
 
     def train_model(self):
-        #Preprosesamianto de datos
+        #Preprosesamiento de datos
         features = self.__df.select([
         "cpu_usage", "ram_usage", "disk_usage", "temperature", "network_latency"]).to_numpy()
         labels = self.__df["anomaly"].to_numpy()
@@ -32,10 +31,5 @@ class Random_F(model_train):
 
         #Realizar Predicciones
         y_pred = model.predict(X_test)
-
-        #Mostrar resultados
-        print(confusion_matrix(y_test, y_pred))
-        print(classification_report(y_test, y_pred))
-
         return model,y_test,y_pred,parameters
 

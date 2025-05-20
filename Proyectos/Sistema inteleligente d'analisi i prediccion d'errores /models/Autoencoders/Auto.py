@@ -1,7 +1,6 @@
 import numpy as np
 from sklearn.neural_network import MLPRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report
 from models.model.model import model_train
 
 class Auto(model_train):
@@ -27,10 +26,10 @@ class Auto(model_train):
         #Realizar la prediccion con X_test
         X_pred = model.predict(X_test)
         mse = np.mean(np.power(X_test - X_pred, 2), axis=1)
+        mae = np.mean(np.abs(X_test - X_pred), axis=1)
         # Lindar para la deteccion de anomalias
         threshold = np.percentile(mse, 95)
         y_pred = ["Normal" if err < threshold else "Anomaly" for err in mse]
         y_true = ["Normal"] * len(y_pred)
-        #Mostrar la classificacion
-        print(classification_report(y_true, y_pred))
-        return model,y_true,y_pred,parameters,mse
+        
+        return model,y_true,y_pred,parameters,mse,mae
