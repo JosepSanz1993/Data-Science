@@ -79,14 +79,3 @@ if __name__ == "__main__":
     #Iniciamos la app ejecutando el script de la app
     os.system("streamlit run mean.py")
     
-    #Abrimos connexion en mongo
-    mongo.connect()
-
-    #Eliminamos connexiones
-    mongo.delete_all_data("autoencoder_results")
-    mongo.delete_all_data("isolation_forest_results")
-    mongo.delete_all_data("random_forest_results")
-    mongo.delete_all_data("mlp_results")
-
-    #Cerramos el mongo
-    mongo.close()

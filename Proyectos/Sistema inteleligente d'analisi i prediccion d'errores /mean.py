@@ -1,5 +1,4 @@
 import streamlit as st
-
 st.set_page_config(
     page_title="Intelligent Error Detection System",
     page_icon="🧠",
@@ -7,6 +6,7 @@ st.set_page_config(
 )
 if st.button("EXIT"):
     st.stop()
+
 
 st.title("🧠 Intelligent System for Error Analysis and Prediction")
 st.markdown("""

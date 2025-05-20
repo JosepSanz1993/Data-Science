@@ -1,7 +1,6 @@
 import streamlit as st
 from utils.dash.constant import *
 import pandas as pd
-import matplotlib.pyplot as plt
 class MeanPage:
     def make_eyelashes(self,data):
         tab1, tab2, tab3 = st.tabs(TABS)
