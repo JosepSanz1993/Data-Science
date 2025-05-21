@@ -1,6 +1,6 @@
 from datetime import datetime
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-from sklearn.metrics import precision_score, recall_score, f1_score
+from sklearn.metrics import precision_score, recall_score, f1_score,roc_curve,auc
 from utils.generate_docu import TrainingResultDocument
 
 class MLPResultDocument(TrainingResultDocument):
@@ -14,6 +14,8 @@ class MLPResultDocument(TrainingResultDocument):
         recall = recall_score(y_test, y_pred, average='weighted')
         f1 = f1_score(y_test, y_pred, average='weighted')
         report_confusion = confusion_matrix(y_test, y_pred)
+        fpr, tpr, _ = roc_curve(y_test, y_pred)
+        roc_auc = auc(fpr, tpr)
         return {
             "model_name": self.model_name,
             "timestamp": datetime.isoformat(datetime.now()),
@@ -24,7 +26,8 @@ class MLPResultDocument(TrainingResultDocument):
                 "confusion_matrix": report_confusion.tolist(),
                 "precision": precision,
                 "recall": recall,
-                "f1_score": f1
+                "f1_score": f1,
+                "roc_auc": roc_auc
             },
             "saved_model": saved_model_path,
             "saved_scaler": saved_scaler_path

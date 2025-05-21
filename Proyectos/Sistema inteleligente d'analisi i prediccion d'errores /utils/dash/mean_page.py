@@ -37,12 +37,8 @@ class MeanPage:
             st.write(data[0]['metrics']['roc_auc'])
             st.markdown("Accuracy")
             st.write(data[0]['metrics']['accuracy'])
-            if data[0]['model_name'] == "Autoencoder":
-                st.markdown("Mean Squared Error")
-                st.line_chart(data[0]['metrics']['mse'])
-                st.markdown("Mean Absolute Error")
-                st.line_chart(data[0]['metrics']['mae'])
-            elif data[0]['model_name'] == "IsolationForest":
+            
+            if data[0]['model_name'] == "IsolationForest":
                 st.write(f"contamination: {data[0]['metrics']['contamination']}")
                 st.write(f"n_estimators: {data[0]['metrics']['n_estimators']}")
                 st.write(f"max_samples: {data[0]['metrics']['max_samples']}")
@@ -61,8 +57,15 @@ class MeanPage:
                 st.bar_chart(df_plot)
                 
             if model_name == "Autoencoder":
-                st.markdown("### Evolució del MSE per mostra")
+                st.markdown("Mean Squared Error")
                 mse = data[0]['metrics'].get('mse', [])
                 if mse:
                     mse_df = pd.DataFrame({'MSE': mse})
                     st.line_chart(mse_df)
+                st.markdown("Mean Absolute Error")
+
+                mae = data[0]['metrics'].get('mae', [])
+                if mae:
+                    mae_df = pd.DataFrame({'MAE': mae})
+                    st.line_chart(mae_df)
+                

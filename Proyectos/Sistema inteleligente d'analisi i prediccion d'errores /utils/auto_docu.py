@@ -1,8 +1,7 @@
 from datetime import datetime
 from sklearn.metrics import classification_report,confusion_matrix,accuracy_score
-from sklearn.metrics import precision_score,recall_score,f1_score,roc_auc_score
+from sklearn.metrics import precision_score,recall_score,f1_score,auc,roc_curve
 from utils.generate_docu import TrainingResultDocument
-
 class AutoencoderResultDocument(TrainingResultDocument):
     def __init__(self,mse,mae):
         self.model_name = "Autoencoder"
@@ -10,17 +9,15 @@ class AutoencoderResultDocument(TrainingResultDocument):
         self.mae = mae
 
     def generate(self, model, y_test, y_pred, parameters, saved_model_path, saved_scaler_path=None):
-        try:
-            report = classification_report(y_test, y_pred, output_dict=True)
-            report_confusion = confusion_matrix(y_test, y_pred)
-            precision = precision_score(y_test, y_pred)
-            recall = recall_score(y_test, y_pred)
-            f1 = f1_score(y_test, y_pred)
-            roc_auc = roc_auc_score(y_test, y_pred)
-            acc = accuracy_score(y_test, y_pred)
-
-        except Exception:
-            report = {}
+        
+        report = classification_report(y_test, y_pred, output_dict=True)
+        report_confusion = confusion_matrix(y_test, y_pred)
+        precision = precision_score(y_test, y_pred)
+        recall = recall_score(y_test, y_pred)
+        f1 = f1_score(y_test, y_pred)
+        fpr,tpr,_= roc_curve(y_test, y_pred)
+        roc_auc = auc(fpr,tpr)
+        acc = accuracy_score(y_test, y_pred)
 
         return {
             "model_name": self.model_name,

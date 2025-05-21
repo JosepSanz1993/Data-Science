@@ -1,6 +1,6 @@
 from datetime import datetime
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-from sklearn.metrics import precision_score,recall_score,f1_scorer,roc_auc_score
+from sklearn.metrics import precision_score,recall_score,f1_score,roc_auc_score
 from utils.generate_docu import TrainingResultDocument
 
 class RandomForestResultDocument(TrainingResultDocument):
@@ -13,7 +13,7 @@ class RandomForestResultDocument(TrainingResultDocument):
         report_confusion = confusion_matrix(y_test, y_pred) # Confusion matrix
         precision = precision_score(y_test, y_pred) # Number of correct total true predictions 
         recall = recall_score(y_test, y_pred) #Number of real true predictions detected
-        f1 = f1_scorer(y_test, y_pred) # Hermeneutic mean between precision and recall
+        f1 = f1_score(y_test, y_pred) # Hermeneutic mean between precision and recall
         roc_auc = roc_auc_score(y_test, y_pred) # Area under the ROC curve
 
         return {
