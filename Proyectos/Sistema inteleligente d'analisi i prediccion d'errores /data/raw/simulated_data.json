@@ -1,8 +1,0 @@
-{"timestamp": "2025-05-21T18:53:29.444988", "cpu_usage": 55.16, "ram_usage": 31.75, "disk_usage": 37.81, "temperature": 62.79, "network_latency": 133.64, "error_code": "OK"}
-{"timestamp": "2025-05-21T18:53:30.457883", "cpu_usage": 63.51, "ram_usage": 39.35, "disk_usage": 83.84, "temperature": 60.67, "network_latency": 169.37, "error_code": "ERR"}
-{"timestamp": "2025-05-21T18:53:31.463196", "cpu_usage": 10.71, "ram_usage": 26.67, "disk_usage": 80.04, "temperature": 48.93, "network_latency": 104.72, "error_code": "OK"}
-{"timestamp": "2025-05-21T18:53:32.474421", "cpu_usage": 81.71, "ram_usage": 24.75, "disk_usage": 52.22, "temperature": 67.96, "network_latency": 79.58, "error_code": "OK"}
-{"timestamp": "2025-05-21T18:53:33.486737", "cpu_usage": 75.83, "ram_usage": 59.06, "disk_usage": 36.0, "temperature": 55.53, "network_latency": 35.76, "error_code": "ERR"}
-{"timestamp": "2025-05-21T18:53:34.493731", "cpu_usage": 34.29, "ram_usage": 48.16, "disk_usage": 60.89, "temperature": 75.74, "network_latency": 13.28, "error_code": "CRIT"}
-{"timestamp": "2025-05-21T18:53:35.503443", "cpu_usage": 54.38, "ram_usage": 55.18, "disk_usage": 64.62, "temperature": 44.92, "network_latency": 34.69, "error_code": "WARN"}
-{"timestamp": "2025-05-21T18:53:36.515366", "cpu_usage": 11.0, "ram_usage": 89.52, "disk_usage": 52.66, "temperature": 71.61, "network_latency": 83.13, "error_code": "ERR"}
