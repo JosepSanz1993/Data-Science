@@ -1,0 +1,1042 @@
+[
+    {
+        "Red": 109,
+        "Green": 124,
+        "Blue": 117,
+        "Clear": 359,
+        "Lux": 86,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 147,
+        "Green": 51,
+        "Blue": 49,
+        "Clear": 243,
+        "Lux": 49,
+        "Color": "Red"
+    },
+    {
+        "Red": 2577,
+        "Green": 3238,
+        "Blue": 1372,
+        "Clear": 7330,
+        "Lux": 2979,
+        "Color": "Green"
+    },
+    {
+        "Red": 3932,
+        "Green": 4395,
+        "Blue": 3036,
+        "Clear": 11656,
+        "Lux": 3581,
+        "Color": "White"
+    },
+    {
+        "Red": 278,
+        "Green": 293,
+        "Blue": 228,
+        "Clear": 807,
+        "Lux": 229,
+        "Color": "Black"
+    },
+    {
+        "Red": 3633,
+        "Green": 3168,
+        "Blue": 1564,
+        "Clear": 8541,
+        "Lux": 2967,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 236,
+        "Green": 251,
+        "Blue": 179,
+        "Clear": 682,
+        "Lux": 203,
+        "Color": "Black"
+    },
+    {
+        "Red": 636,
+        "Green": 728,
+        "Blue": 573,
+        "Clear": 1986,
+        "Lux": 560,
+        "Color": "White"
+    },
+    {
+        "Red": 75,
+        "Green": 61,
+        "Blue": 45,
+        "Clear": 181,
+        "Lux": 51,
+        "Color": "Black"
+    },
+    {
+        "Red": 738,
+        "Green": 630,
+        "Blue": 336,
+        "Clear": 1754,
+        "Lux": 581,
+        "Color": "Tan"
+    },
+    {
+        "Red": 993,
+        "Green": 795,
+        "Blue": 509,
+        "Clear": 2346,
+        "Lux": 704,
+        "Color": "Tan"
+    },
+    {
+        "Red": 213,
+        "Green": 74,
+        "Blue": 40,
+        "Clear": 334,
+        "Lux": 85,
+        "Color": "Orange"
+    },
+    {
+        "Red": 973,
+        "Green": 812,
+        "Blue": 586,
+        "Clear": 2443,
+        "Lux": 684,
+        "Color": "Pink"
+    },
+    {
+        "Red": 3837,
+        "Green": 4261,
+        "Blue": 2902,
+        "Clear": 11397,
+        "Lux": 3494,
+        "Color": "White"
+    },
+    {
+        "Red": 952,
+        "Green": 385,
+        "Blue": 569,
+        "Clear": 1866,
+        "Lux": 261,
+        "Color": "Purple"
+    },
+    {
+        "Red": 638,
+        "Green": 586,
+        "Blue": 331,
+        "Clear": 1590,
+        "Lux": 525,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 1126,
+        "Green": 823,
+        "Blue": 407,
+        "Clear": 2422,
+        "Lux": 795,
+        "Color": "Tan"
+    },
+    {
+        "Red": 331,
+        "Green": 851,
+        "Blue": 404,
+        "Clear": 1623,
+        "Lux": 716,
+        "Color": "Green"
+    },
+    {
+        "Red": 263,
+        "Green": 428,
+        "Blue": 363,
+        "Clear": 1069,
+        "Lux": 302,
+        "Color": "dark blue"
+    },
+    {
+        "Red": 1088,
+        "Green": 720,
+        "Blue": 433,
+        "Clear": 2257,
+        "Lux": 675,
+        "Color": "Golden"
+    },
+    {
+        "Red": 440,
+        "Green": 963,
+        "Blue": 1317,
+        "Clear": 2736,
+        "Lux": 438,
+        "Color": "Blue"
+    },
+    {
+        "Red": 1077,
+        "Green": 802,
+        "Blue": 454,
+        "Clear": 2375,
+        "Lux": 746,
+        "Color": "Golden"
+    },
+    {
+        "Red": 294,
+        "Green": 459,
+        "Blue": 612,
+        "Clear": 1388,
+        "Lux": 227,
+        "Color": "Blue"
+    },
+    {
+        "Red": 4107,
+        "Green": 5031,
+        "Blue": 1873,
+        "Clear": 11337,
+        "Lux": 4757,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 365,
+        "Green": 212,
+        "Blue": 158,
+        "Clear": 732,
+        "Lux": 191,
+        "Color": "Maroon"
+    },
+    {
+        "Red": 979,
+        "Green": 532,
+        "Blue": 266,
+        "Clear": 1779,
+        "Lux": 547,
+        "Color": "Golden"
+    },
+    {
+        "Red": 1023,
+        "Green": 1048,
+        "Blue": 559,
+        "Clear": 2712,
+        "Lux": 938,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 1350,
+        "Green": 1376,
+        "Blue": 726,
+        "Clear": 3562,
+        "Lux": 1237,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 2010,
+        "Green": 2045,
+        "Blue": 1063,
+        "Clear": 5282,
+        "Lux": 1846,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 1799,
+        "Green": 1833,
+        "Blue": 958,
+        "Clear": 4738,
+        "Lux": 1652,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 554,
+        "Green": 803,
+        "Blue": 529,
+        "Clear": 1936,
+        "Lux": 643,
+        "Color": "Olive"
+    },
+    {
+        "Red": 1171,
+        "Green": 1693,
+        "Blue": 1086,
+        "Clear": 4055,
+        "Lux": 1370,
+        "Color": "Olive"
+    },
+    {
+        "Red": 1587,
+        "Green": 2306,
+        "Blue": 1465,
+        "Clear": 5507,
+        "Lux": 1871,
+        "Color": "Olive"
+    },
+    {
+        "Red": 3694,
+        "Green": 6442,
+        "Blue": 3868,
+        "Clear": 14654,
+        "Lux": 5226,
+        "Color": "Olive"
+    },
+    {
+        "Red": 689,
+        "Green": 522,
+        "Blue": 459,
+        "Clear": 1710,
+        "Lux": 411,
+        "Color": "Pink"
+    },
+    {
+        "Red": 980,
+        "Green": 729,
+        "Blue": 633,
+        "Clear": 2396,
+        "Lux": 581,
+        "Color": "Pink"
+    },
+    {
+        "Red": 702,
+        "Green": 531,
+        "Blue": 467,
+        "Clear": 1740,
+        "Lux": 419,
+        "Color": "Pink"
+    },
+    {
+        "Red": 823,
+        "Green": 619,
+        "Blue": 541,
+        "Clear": 2030,
+        "Lux": 490,
+        "Color": "Pink"
+    },
+    {
+        "Red": 943,
+        "Green": 946,
+        "Blue": 399,
+        "Clear": 2345,
+        "Lux": 897,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 89,
+        "Green": 95,
+        "Blue": 73,
+        "Clear": 261,
+        "Lux": 74,
+        "Color": "Black"
+    },
+    {
+        "Red": 1696,
+        "Green": 1896,
+        "Blue": 1408,
+        "Clear": 5157,
+        "Lux": 1501,
+        "Color": "White"
+    },
+    {
+        "Red": 306,
+        "Green": 363,
+        "Blue": 246,
+        "Clear": 939,
+        "Lux": 295,
+        "Color": "Teal"
+    },
+    {
+        "Red": 197,
+        "Green": 226,
+        "Blue": 164,
+        "Clear": 591,
+        "Lux": 179,
+        "Color": "Teal"
+    },
+    {
+        "Red": 54,
+        "Green": 89,
+        "Blue": 84,
+        "Clear": 230,
+        "Lux": 59,
+        "Color": "Sky Blue"
+    },
+    {
+        "Red": 531,
+        "Green": 848,
+        "Blue": 724,
+        "Clear": 2137,
+        "Lux": 598,
+        "Color": "Sky Blue"
+    },
+    {
+        "Red": 1243,
+        "Green": 317,
+        "Blue": 278,
+        "Clear": 1810,
+        "Lux": 362,
+        "Color": "Red"
+    },
+    {
+        "Red": 2154,
+        "Green": 552,
+        "Blue": 469,
+        "Clear": 3136,
+        "Lux": 636,
+        "Color": "Red"
+    },
+    {
+        "Red": 883,
+        "Green": 222,
+        "Blue": 195,
+        "Clear": 1281,
+        "Lux": 255,
+        "Color": "Red"
+    },
+    {
+        "Red": 989,
+        "Green": 255,
+        "Blue": 224,
+        "Clear": 1447,
+        "Lux": 290,
+        "Color": "Red"
+    },
+    {
+        "Red": 1007,
+        "Green": 1216,
+        "Blue": 877,
+        "Clear": 3263,
+        "Lux": 963,
+        "Color": "Gray"
+    },
+    {
+        "Red": 1089,
+        "Green": 1333,
+        "Blue": 956,
+        "Clear": 3535,
+        "Lux": 1056,
+        "Color": "Gray"
+    },
+    {
+        "Red": 886,
+        "Green": 1067,
+        "Blue": 774,
+        "Clear": 2863,
+        "Lux": 843,
+        "Color": "Gray"
+    },
+    {
+        "Red": 81,
+        "Green": 115,
+        "Blue": 113,
+        "Clear": 316,
+        "Lux": 75,
+        "Color": "Gray"
+    },
+    {
+        "Red": 110,
+        "Green": 154,
+        "Blue": 151,
+        "Clear": 424,
+        "Lux": 101,
+        "Color": "Gray"
+    },
+    {
+        "Red": 227,
+        "Green": 314,
+        "Blue": 147,
+        "Clear": 715,
+        "Lux": 279,
+        "Color": "lime"
+    },
+    {
+        "Red": 224,
+        "Green": 312,
+        "Blue": 146,
+        "Clear": 707,
+        "Lux": 277,
+        "Color": "lime"
+    },
+    {
+        "Red": 232,
+        "Green": 320,
+        "Blue": 150,
+        "Clear": 728,
+        "Lux": 284,
+        "Color": "lime"
+    },
+    {
+        "Red": 74,
+        "Green": 167,
+        "Blue": 279,
+        "Clear": 525,
+        "Lux": 53,
+        "Color": "indigo"
+    },
+    {
+        "Red": 67,
+        "Green": 163,
+        "Blue": 277,
+        "Clear": 512,
+        "Lux": 49,
+        "Color": "indfgo"
+    },
+    {
+        "Red": 78,
+        "Green": 172,
+        "Blue": 285,
+        "Clear": 540,
+        "Lux": 56,
+        "Color": "indigo"
+    },
+    {
+        "Red": 75,
+        "Green": 170,
+        "Blue": 282,
+        "Clear": 532,
+        "Lux": 54,
+        "Color": "indigo"
+    },
+    {
+        "Red": 69,
+        "Green": 164,
+        "Blue": 277,
+        "Clear": 516,
+        "Lux": 50,
+        "Color": "indigo"
+    },
+    {
+        "Red": 84,
+        "Green": 179,
+        "Blue": 294,
+        "Clear": 562,
+        "Lux": 59,
+        "Color": "indigo"
+    },
+    {
+        "Red": 247,
+        "Green": 371,
+        "Blue": 431,
+        "Clear": 1068,
+        "Lux": 213,
+        "Color": "lavender"
+    },
+    {
+        "Red": 244,
+        "Green": 368,
+        "Blue": 427,
+        "Clear": 1058,
+        "Lux": 211,
+        "Color": "lavender"
+    },
+    {
+        "Red": 234,
+        "Green": 360,
+        "Blue": 420,
+        "Clear": 1033,
+        "Lux": 205,
+        "Color": "lavender"
+    },
+    {
+        "Red": 255,
+        "Green": 379,
+        "Blue": 436,
+        "Clear": 1089,
+        "Lux": 220,
+        "Color": "lavender"
+    },
+    {
+        "Red": 244,
+        "Green": 370,
+        "Blue": 428,
+        "Clear": 1061,
+        "Lux": 213,
+        "Color": "lavender"
+    },
+    {
+        "Red": 237,
+        "Green": 363,
+        "Blue": 423,
+        "Clear": 1042,
+        "Lux": 207,
+        "Color": "lavender"
+    },
+    {
+        "Red": 235,
+        "Green": 361,
+        "Blue": 423,
+        "Clear": 1038,
+        "Lux": 205,
+        "Color": "lavender"
+    },
+    {
+        "Red": 290,
+        "Green": 306,
+        "Blue": 335,
+        "Clear": 948,
+        "Lux": 196,
+        "Color": "rose"
+    },
+    {
+        "Red": 296,
+        "Green": 310,
+        "Blue": 340,
+        "Clear": 962,
+        "Lux": 199,
+        "Color": "rose"
+    },
+    {
+        "Red": 296,
+        "Green": 311,
+        "Blue": 340,
+        "Clear": 963,
+        "Lux": 200,
+        "Color": "rose"
+    },
+    {
+        "Red": 296,
+        "Green": 311,
+        "Blue": 340,
+        "Clear": 963,
+        "Lux": 200,
+        "Color": "rose"
+    },
+    {
+        "Red": 295,
+        "Green": 311,
+        "Blue": 342,
+        "Clear": 963,
+        "Lux": 199,
+        "Color": "rose"
+    },
+    {
+        "Red": 304,
+        "Green": 318,
+        "Blue": 348,
+        "Clear": 986,
+        "Lux": 204,
+        "Color": "rose"
+    },
+    {
+        "Red": 39,
+        "Green": 54,
+        "Blue": 50,
+        "Clear": 147,
+        "Lux": 37,
+        "Color": "Black"
+    },
+    {
+        "Red": 37,
+        "Green": 55,
+        "Blue": 53,
+        "Clear": 150,
+        "Lux": 36,
+        "Color": "Black"
+    },
+    {
+        "Red": 41,
+        "Green": 65,
+        "Blue": 64,
+        "Clear": 176,
+        "Lux": 42,
+        "Color": "Black"
+    },
+    {
+        "Red": 37,
+        "Green": 54,
+        "Blue": 52,
+        "Clear": 148,
+        "Lux": 35,
+        "Color": "Black"
+    },
+    {
+        "Red": 39,
+        "Green": 57,
+        "Blue": 54,
+        "Clear": 154,
+        "Lux": 38,
+        "Color": "Black"
+    },
+    {
+        "Red": 118,
+        "Green": 141,
+        "Blue": 200,
+        "Clear": 466,
+        "Lux": 68,
+        "Color": "Purple"
+    },
+    {
+        "Red": 116,
+        "Green": 138,
+        "Blue": 198,
+        "Clear": 458,
+        "Lux": 65,
+        "Color": "Purple"
+    },
+    {
+        "Red": 117,
+        "Green": 140,
+        "Blue": 200,
+        "Clear": 465,
+        "Lux": 67,
+        "Color": "Purple"
+    },
+    {
+        "Red": 115,
+        "Green": 137,
+        "Blue": 198,
+        "Clear": 458,
+        "Lux": 64,
+        "Color": "Purple"
+    },
+    {
+        "Red": 118,
+        "Green": 135,
+        "Blue": 195,
+        "Clear": 453,
+        "Lux": 64,
+        "Color": "Purple"
+    },
+    {
+        "Red": 117,
+        "Green": 136,
+        "Blue": 197,
+        "Clear": 457,
+        "Lux": 64,
+        "Color": "Purple"
+    },
+    {
+        "Red": 95,
+        "Green": 191,
+        "Blue": 115,
+        "Clear": 416,
+        "Lux": 152,
+        "Color": "Green"
+    },
+    {
+        "Red": 115,
+        "Green": 209,
+        "Blue": 124,
+        "Clear": 461,
+        "Lux": 169,
+        "Color": "Green"
+    },
+    {
+        "Red": 126,
+        "Green": 219,
+        "Blue": 132,
+        "Clear": 492,
+        "Lux": 177,
+        "Color": "Green"
+    },
+    {
+        "Red": 103,
+        "Green": 198,
+        "Blue": 118,
+        "Clear": 434,
+        "Lux": 159,
+        "Color": "Green"
+    },
+    {
+        "Red": 107,
+        "Green": 203,
+        "Blue": 121,
+        "Clear": 446,
+        "Lux": 163,
+        "Color": "Green"
+    },
+    {
+        "Red": 305,
+        "Green": 271,
+        "Blue": 139,
+        "Clear": 735,
+        "Lux": 250,
+        "Color": "Golden"
+    },
+    {
+        "Red": 317,
+        "Green": 280,
+        "Blue": 143,
+        "Clear": 759,
+        "Lux": 259,
+        "Color": "Golden"
+    },
+    {
+        "Red": 321,
+        "Green": 284,
+        "Blue": 146,
+        "Clear": 769,
+        "Lux": 262,
+        "Color": "Golden"
+    },
+    {
+        "Red": 324,
+        "Green": 285,
+        "Blue": 147,
+        "Clear": 774,
+        "Lux": 263,
+        "Color": "Golden"
+    },
+    {
+        "Red": 320,
+        "Green": 282,
+        "Blue": 145,
+        "Clear": 766,
+        "Lux": 261,
+        "Color": "Golden"
+    },
+    {
+        "Red": 161,
+        "Green": 144,
+        "Blue": 115,
+        "Clear": 428,
+        "Lux": 114,
+        "Color": "Brown"
+    },
+    {
+        "Red": 183,
+        "Green": 163,
+        "Blue": 128,
+        "Clear": 481,
+        "Lux": 131,
+        "Color": "Brown"
+    },
+    {
+        "Red": 187,
+        "Green": 167,
+        "Blue": 131,
+        "Clear": 492,
+        "Lux": 134,
+        "Color": "Brown"
+    },
+    {
+        "Red": 165,
+        "Green": 148,
+        "Blue": 118,
+        "Clear": 438,
+        "Lux": 118,
+        "Color": "Brown"
+    },
+    {
+        "Red": 161,
+        "Green": 147,
+        "Blue": 119,
+        "Clear": 436,
+        "Lux": 116,
+        "Color": "Brown"
+    },
+    {
+        "Red": 164,
+        "Green": 145,
+        "Blue": 116,
+        "Clear": 433,
+        "Lux": 115,
+        "Color": "Brown"
+    },
+    {
+        "Red": 157,
+        "Green": 143,
+        "Blue": 117,
+        "Clear": 426,
+        "Lux": 112,
+        "Color": "Brown"
+    },
+    {
+        "Red": 155,
+        "Green": 143,
+        "Blue": 118,
+        "Clear": 426,
+        "Lux": 111,
+        "Color": "Brown"
+    },
+    {
+        "Red": 160,
+        "Green": 144,
+        "Blue": 116,
+        "Clear": 428,
+        "Lux": 114,
+        "Color": "Brown"
+    },
+    {
+        "Red": 162,
+        "Green": 145,
+        "Blue": 116,
+        "Clear": 432,
+        "Lux": 115,
+        "Color": "Brown"
+    },
+    {
+        "Red": 281,
+        "Green": 553,
+        "Blue": 558,
+        "Clear": 1430,
+        "Lux": 343,
+        "Color": "Sky Blue"
+    },
+    {
+        "Red": 275,
+        "Green": 552,
+        "Blue": 562,
+        "Clear": 1423,
+        "Lux": 339,
+        "Color": "Sky Blue"
+    },
+    {
+        "Red": 274,
+        "Green": 549,
+        "Blue": 557,
+        "Clear": 1415,
+        "Lux": 338,
+        "Color": "Sky Blue"
+    },
+    {
+        "Red": 281,
+        "Green": 554,
+        "Blue": 559,
+        "Clear": 1429,
+        "Lux": 344,
+        "Color": "Sky Blue"
+    },
+    {
+        "Red": 278,
+        "Green": 550,
+        "Blue": 556,
+        "Clear": 1419,
+        "Lux": 340,
+        "Color": "Sky Blue"
+    },
+    {
+        "Red": 272,
+        "Green": 543,
+        "Blue": 550,
+        "Clear": 1400,
+        "Lux": 335,
+        "Color": "Sky Blue"
+    },
+    {
+        "Red": 265,
+        "Green": 537,
+        "Blue": 547,
+        "Clear": 1383,
+        "Lux": 330,
+        "Color": "Sky Blue"
+    },
+    {
+        "Red": 262,
+        "Green": 535,
+        "Blue": 546,
+        "Clear": 1378,
+        "Lux": 328,
+        "Color": "Sky Blue"
+    },
+    {
+        "Red": 57,
+        "Green": 73,
+        "Blue": 71,
+        "Clear": 203,
+        "Lux": 49,
+        "Color": "dark blue"
+    },
+    {
+        "Red": 68,
+        "Green": 81,
+        "Blue": 78,
+        "Clear": 227,
+        "Lux": 55,
+        "Color": "dark blue"
+    },
+    {
+        "Red": 59,
+        "Green": 73,
+        "Blue": 72,
+        "Clear": 205,
+        "Lux": 49,
+        "Color": "dark blue"
+    },
+    {
+        "Red": 60,
+        "Green": 74,
+        "Blue": 73,
+        "Clear": 208,
+        "Lux": 49,
+        "Color": "dark blue"
+    },
+    {
+        "Red": 53,
+        "Green": 69,
+        "Blue": 69,
+        "Clear": 193,
+        "Lux": 45,
+        "Color": "dark blue"
+    },
+    {
+        "Red": 44,
+        "Green": 58,
+        "Blue": 61,
+        "Clear": 165,
+        "Lux": 36,
+        "Color": "dark blue"
+    },
+    {
+        "Red": 354,
+        "Green": 410,
+        "Blue": 218,
+        "Clear": 1015,
+        "Lux": 361,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 369,
+        "Green": 421,
+        "Blue": 220,
+        "Clear": 1042,
+        "Lux": 373,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 366,
+        "Green": 419,
+        "Blue": 220,
+        "Clear": 1037,
+        "Lux": 371,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 372,
+        "Green": 424,
+        "Blue": 221,
+        "Clear": 1049,
+        "Lux": 376,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 368,
+        "Green": 421,
+        "Blue": 220,
+        "Clear": 1041,
+        "Lux": 373,
+        "Color": "Yellow"
+    },
+    {
+        "Red": 399,
+        "Green": 579,
+        "Blue": 585,
+        "Clear": 1599,
+        "Lux": 373,
+        "Color": "White"
+    },
+    {
+        "Red": 407,
+        "Green": 588,
+        "Blue": 595,
+        "Clear": 1625,
+        "Lux": 379,
+        "Color": "White"
+    },
+    {
+        "Red": 393,
+        "Green": 575,
+        "Blue": 585,
+        "Clear": 1588,
+        "Lux": 368,
+        "Color": "White"
+    },
+    {
+        "Red": 389,
+        "Green": 571,
+        "Blue": 582,
+        "Clear": 1576,
+        "Lux": 365,
+        "Color": "White"
+    }
+]
