@@ -1,4 +1,4 @@
-from model.model import model_train
+from models.model.model import model_train
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from scripts.global_var import *
