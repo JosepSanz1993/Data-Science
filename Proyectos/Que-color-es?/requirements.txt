@@ -1,0 +1,15 @@
+polares
+numpy
+scikit-learn
+psutil
+streamlit
+plotly
+flask
+sqlalchemy
+pymongo
+influxdb
+joblib
+matplotlib
+seaborn
+vpython
+
