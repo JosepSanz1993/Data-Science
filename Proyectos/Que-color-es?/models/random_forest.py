@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
-class r_forest(model_train):
+class RandomForestModel(model_train):
     def __init__(self, data):
         self.data = self.load_data(data)
         self.data = self.data.to_pandas()
@@ -30,6 +30,3 @@ class r_forest(model_train):
         plt.title("Matriz de Confusión - Random Forest")
         plt.tight_layout()
         plt.show()
-
-r = r_forest("data/processed/color_sensor_data_processed.json")
-r.train_model("Color")
