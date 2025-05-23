@@ -1,71 +1,69 @@
 from trainmodel import model_train
 from sklearn.ensemble import IsolationForest
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from trainmodel import pl
+import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 import seaborn as sns
-
-class IsolationForestModel(model_train):
-    def __init__(self, json_path):
-        self.json_path = json_path
-        self.numeric_cols = ["Red", "Green", "Blue", "Clear", "Lux"]
+class AnomalyCleaner(model_train):
+    def __init__(self):
+        self.cleaned_df = None
         self.df = None
-        self.model = None
+        self.feature_columns = None
+        self.anomalies = None
 
-    def preprocess(self):
-        pl_df = self.load_data(self.json_path)
-        self.df = pl_df.to_pandas()
-        self.df[self.numeric_cols] = self.df[self.numeric_cols].astype(float)
+    def load_data(self, input_data):
+        self.df = super().load_data(input_data)
 
-    def inject_errors(self, n_errors=15):
-        idxs = np.random.choice(self.df.index, size=n_errors, replace=False)
-        for idx in idxs:
-            col = np.random.choice(self.numeric_cols)
-            self.df.at[idx, col] = float(self.df[col].min()) / 10
+    def train_model(self, column):
+        if self.df is None:
+            raise ValueError("No se han cargado los datos.")
 
-    def detect_anomalies(self):
-        X = self.df[self.numeric_cols]
-        iso = IsolationForest(contamination=0.05, random_state=42)
-        self.df["anomaly"] = iso.fit_predict(X)
+        self.feature_columns = [
+            col for col in self.df.columns
+            if col != column and self.df[col].dtype in (pl.Float64, pl.Int64)
+        ]
 
-    def train_model(self, target_col):
-        self.preprocess()
-        self.inject_errors()
-        self.detect_anomalies()
+        if not self.feature_columns:
+            raise ValueError("ho hay columnas numéricas disponibles para el entrenamiento.")
 
-        df_clean = self.df[self.df["anomaly"] == 1]
-        X = df_clean[self.numeric_cols]
-        y = df_clean[target_col]
+        df_pd = self.df.to_pandas()
 
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-        clf = DecisionTreeClassifier(random_state=42)
-        clf.fit(X_train, y_train)
-        self.model = clf
-        y_pred = clf.predict(X_test)
+        iso = IsolationForest(contamination=0.2, random_state=42)
+        df_pd["anomaly"] = iso.fit_predict(df_pd[self.feature_columns])
 
-        labels = sorted(y.unique())
-        cm = confusion_matrix(y_test, y_pred, labels=labels)
-        disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels)
-        plt.figure(figsize=(10,8))
-        disp.plot(cmap=plt.cm.Blues)
-        plt.xticks(rotation=45, ha='right') 
-        plt.title("Matriz de confusión (sin anomalias)")
+        self.anomalies = df_pd[df_pd["anomaly"] == -1]
+        df_clean = df_pd[df_pd["anomaly"] == 1].drop(columns=["anomaly"])
+
+        self.cleaned_df = pl.from_pandas(df_clean)
+
+    def get_clean_data(self):
+        if self.cleaned_df is None:
+            raise ValueError("Los datos todavia no se han processado.")
+        return self.cleaned_df
+
+    def export_clean_json(self, path="data/processed/cleaned_data.json"):
+        if self.cleaned_df is None:
+            raise ValueError("no hay datos a exportar.")
+        self.cleaned_df.write_json(path)
+        print(f"✔️ Fichero JSON exportado en: {path}")
+
+    def show_anomalies(self):
+        if self.anomalies is None or self.anomalies.empty:
+            print("ℹ️ No se han detectado anomalies en este modelo.")
+            return
+
+        print("📊 Anomalias detectadas:")
+        print(self.anomalies)
+
+        sns.pairplot(self.anomalies[self.feature_columns])
+        plt.suptitle("Anomalias detectadas (Isolation Forest)", y=1.02)
         plt.tight_layout()
         plt.show()
 
+"""if __name__ == "__main__":
 
-        plt.figure(figsize=(8, 6))
-        sns.scatterplot(data=self.df, x="Red", y="Green", hue="anomaly", palette={1: "blue", -1: "red"})
-        plt.title("Anomalias detectadas con Isolation Forest (Red vs Green)")
-        plt.xlabel("Red")
-        plt.ylabel("Green")
-        plt.legend(title="Anomaly")
-        plt.show()
-
-
-
-
-
-
+    cleaner = AnomalyCleaner()
+    cleaner.load_data("data/processed/color_sensor_data_processed.json")
+    cleaner.train_model("Color")
+    cleaner.show_anomalies()               
+    cleaner.export_clean_json()"""

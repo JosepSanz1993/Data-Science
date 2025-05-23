@@ -1,32 +1,81 @@
-from trainmodel import model_train
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+from trainmodel import model_train
+class RandomForestColorClassifier(model_train):
+    def __init__(self):
+        super().__init__()
+        self.model = None
+        self.encoder = LabelEncoder()
+        self.scaler = StandardScaler()
+        self.fitted = False 
 
-class RandomForestModel(model_train):
-    def __init__(self, data):
-        self.data = self.load_data(data)
-        self.data = self.data.to_pandas()
+    def preprocess(self, df, target_column):
+        df = df.rename({col: col.strip().capitalize() for col in df.columns})
+        self.df = df
 
-    def train_model(self,colum):
-        X = self.data.drop(columns=[colum])
-        y = self.data[colum]
-        y_encoded = y.astype("category").cat.codes
-        category_mapping = dict(enumerate(y.astype("category").cat.categories))
+        X = df.drop(target_column)
+        y = df[target_column]
 
-        X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
-        clf = RandomForestClassifier(random_state=42)
-        clf.fit(X_train, y_train)
-        y_pred = clf.predict(X_test)
+        self.features = X.to_numpy()
+        self.labels = self.encoder.fit_transform(y)
 
-        all_classes = list(category_mapping.keys())
-        cm = confusion_matrix(y_test, y_pred, labels=all_classes)
-        disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[category_mapping[i] for i in all_classes])
-        
-        plt.figure(figsize=(10,8))
-        disp.plot(cmap=plt.cm.Blues)
-        plt.xticks(rotation=45, ha='right') 
-        plt.title("Matriz de Confusión - Random Forest")
+        self.features = self.scaler.fit_transform(self.features)
+
+    def plot_confusion_matrix(self, y_true, y_pred, labels):
+        cm = confusion_matrix(y_true, y_pred, labels=labels)
+        plt.figure(figsize=(10, 8))
+        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+                    xticklabels=self.encoder.inverse_transform(labels),
+                    yticklabels=self.encoder.inverse_transform(labels))
+        plt.xlabel("Predicción")
+        plt.ylabel("Valor Real")
+        plt.title("Matriz de Confusión")
         plt.tight_layout()
         plt.show()
+
+    def train_model(self, target_column,path):
+        self.preprocess(self.load_data(path), target_column)
+
+        X_train, X_test, y_train, y_test = train_test_split(
+            self.features, self.labels, test_size=0.2, random_state=42
+        )
+
+        self.model = RandomForestClassifier(n_estimators=100, random_state=42)
+        self.model.fit(X_train, y_train)
+
+        y_pred = self.model.predict(X_test)
+        unique_labels = np.unique(y_test)
+
+        print("Classificación:")
+        print(classification_report(
+            y_test,
+            y_pred,
+            labels=unique_labels,
+            target_names=self.encoder.inverse_transform(unique_labels)
+        ))
+
+        self.plot_confusion_matrix(y_test, y_pred, labels=unique_labels)
+        self.fitted = True
+
+    def predict_color(self, input_dict):
+        if not self.fitted:
+            raise RuntimeError("Modelo no entrenado")
+
+        expected_features = ["Red", "Green", "Blue", "Clear", "Lux"]
+        input_ordered = [input_dict[feature] for feature in expected_features]
+
+        input_scaled = self.scaler.transform([input_ordered])
+        prediction = self.model.predict(input_scaled)
+        predicted_color = self.encoder.inverse_transform(prediction)[0]
+        print(f"🔮 Color predecido: {predicted_color}")
+        return predicted_color
+
+if __name__ == "__main__":
+    clf = RandomForestColorClassifier()
+    clf.train_model("Color", "data/processed/color_sensor_data_processed.json")
+    print(clf.predict_color({"Red": 109, "Green": 124, "Blue": 117, "Clear": 359, "Lux": 86}))
