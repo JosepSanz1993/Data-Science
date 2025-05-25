@@ -1,4 +1,4 @@
-from trainmodel import model_train
+from models.trainmodel import model_train
 from sklearn.ensemble import IsolationForest
 from trainmodel import pl
 import pandas as pd

@@ -3,7 +3,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report
 from trainmodel import model_train
-from trainmodel import pl
+from models.trainmodel import pl
 import numpy as np
 
 class ColorClassifier(model_train):
@@ -30,7 +30,7 @@ class ColorClassifier(model_train):
         print("Classificación:")
         print(classification_report(y_test, y_pred, labels=unique_labels, target_names=self.encoder.classes_))
 
-    def predict(self, input_array):
+    def predict_color(self, input_array):
         if self.model is None:
             raise Exception("El modelo no ha sido entrenado.")
         pred = self.model.predict([input_array])

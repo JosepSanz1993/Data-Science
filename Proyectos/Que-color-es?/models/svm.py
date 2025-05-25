@@ -1,0 +1,58 @@
+import models.trainmodel as pl
+from sklearn.svm import SVC
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.pipeline import make_pipeline
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix, classification_report
+from trainmodel import model_train
+import pandas as pd
+
+class SVMColorClassifier(model_train):
+    def __init__(self,path):
+        self.model = None
+        self.path = path
+        self.le = LabelEncoder()
+        self.scaler = StandardScaler()
+    
+    def train_model(self, label_col):
+        df = self.load_data(self.path)
+        df_pd = df.to_pandas()
+    
+        X = df_pd.drop(columns=[label_col])
+        y = df_pd[label_col]
+        
+        y_enc = self.le.fit_transform(y)
+
+        X_train, X_test, y_train, y_test = train_test_split(X, y_enc, test_size=0.3, random_state=42)
+        self.model = make_pipeline(StandardScaler(), SVC(kernel='rbf', C=1, gamma='scale'))
+        self.model.fit(X_train, y_train)
+        y_pred = self.model.predict(X_test)
+        
+        cm = confusion_matrix(y_test, y_pred)
+        print("Matriz de confusión:")
+        print(cm)
+
+        labels = sorted(set(y_test))
+        target_names = self.le.inverse_transform(labels)
+        cr = classification_report(y_test, y_pred, labels=labels, target_names=self.le.classes_)
+        print("\nInforme de classificación:")
+        print(cr)
+    
+    def predict_color(self, sample_dict):
+        import pandas as pd
+        X_sample = pd.DataFrame([sample_dict])
+        y_pred_enc = self.model.predict(X_sample)
+        return self.le.inverse_transform(y_pred_enc)[0]
+    
+"""if __name__ == '__main__':
+    svm_model = SVMColorClassifier("data/processed/color_sensor_data_processed.json")
+    svm_model.train_model('Color')
+    mostra = {
+        "Red": 110,
+        "Green": 120,
+        "Blue": 115,
+        "Clear": 360,
+        "Lux": 85
+    }
+    color_pred = svm_model.predict(mostra)
+    print("Color predicción:", color_pred)"""
