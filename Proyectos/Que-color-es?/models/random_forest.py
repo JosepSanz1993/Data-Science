@@ -5,7 +5,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-from trainmodel import model_train
+from models.trainmodel import model_train
 class RandomForestColorClassifier(model_train):
     def __init__(self):
         super().__init__()
@@ -74,8 +74,3 @@ class RandomForestColorClassifier(model_train):
         predicted_color = self.encoder.inverse_transform(prediction)[0]
         print(f"🔮 Color predecido: {predicted_color}")
         return predicted_color
-
-if __name__ == "__main__":
-    clf = RandomForestColorClassifier()
-    clf.train_model("Color", "data/processed/color_sensor_data_processed.json")
-    print(clf.predict_color({"Red": 109, "Green": 124, "Blue": 117, "Clear": 359, "Lux": 86}))

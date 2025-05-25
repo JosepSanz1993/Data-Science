@@ -4,7 +4,7 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report
-from trainmodel import model_train
+from models.trainmodel import model_train
 import pandas as pd
 
 class SVMColorClassifier(model_train):
@@ -44,15 +44,4 @@ class SVMColorClassifier(model_train):
         y_pred_enc = self.model.predict(X_sample)
         return self.le.inverse_transform(y_pred_enc)[0]
     
-"""if __name__ == '__main__':
-    svm_model = SVMColorClassifier("data/processed/color_sensor_data_processed.json")
-    svm_model.train_model('Color')
-    mostra = {
-        "Red": 110,
-        "Green": 120,
-        "Blue": 115,
-        "Clear": 360,
-        "Lux": 85
-    }
-    color_pred = svm_model.predict(mostra)
-    print("Color predicción:", color_pred)"""
+

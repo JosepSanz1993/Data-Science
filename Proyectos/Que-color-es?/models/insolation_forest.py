@@ -1,6 +1,6 @@
 from models.trainmodel import model_train
 from sklearn.ensemble import IsolationForest
-from trainmodel import pl
+from models.trainmodel import pl
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -11,7 +11,7 @@ class AnomalyCleaner(model_train):
         self.feature_columns = None
         self.anomalies = None
 
-    def load_data(self, input_data):
+    def load_data(self, input_data,target_column=None):
         self.df = super().load_data(input_data)
 
     def train_model(self, column):
@@ -59,11 +59,3 @@ class AnomalyCleaner(model_train):
         plt.suptitle("Anomalias detectadas (Isolation Forest)", y=1.02)
         plt.tight_layout()
         plt.show()
-
-"""if __name__ == "__main__":
-
-    cleaner = AnomalyCleaner()
-    cleaner.load_data("data/processed/color_sensor_data_processed.json")
-    cleaner.train_model("Color")
-    cleaner.show_anomalies()               
-    cleaner.export_clean_json()"""

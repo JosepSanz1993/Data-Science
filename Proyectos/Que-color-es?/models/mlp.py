@@ -2,7 +2,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report
-from trainmodel import model_train
+from models.trainmodel import model_train
 from models.trainmodel import pl
 import numpy as np
 
@@ -17,7 +17,7 @@ class ColorClassifier(model_train):
         self.features = df.drop(target_column).to_numpy()
         self.labels = self.encoder.fit_transform(df[target_column].to_numpy())
 
-    def train_model(self, target_column):
+    def train_model(self,target_column):
         self.preprocess(self.df, target_column)
         X_train, X_test, y_train, y_test = train_test_split(
             self.features, self.labels, test_size=0.2, random_state=42
@@ -38,8 +38,3 @@ class ColorClassifier(model_train):
 
     def load_data(self, input_data):
         self.df = super().load_data(input_data)
-
-"""clf = ColorClassifier()
-clf.load_data("data/processed/color_sensor_data_processed.json")
-clf.train_model("Color")
-print(clf.predict([109, 124, 117, 359, 86]))"""
