@@ -4,12 +4,14 @@ from models.svm import SVMColorClassifier
 from models.random_forest import RandomForestColorClassifier
 from scripts.global_var import *
 from scripts.etl import ETL
+from models.kmeans import KMeansColorClassifier
 
 etl = ETL(DATA_NOT_PROCESSED)
 anomaly = AnomalyCleaner()
 mlp = ColorClassifier()
 svm = SVMColorClassifier(DATA_CLEANED)
 rf = RandomForestColorClassifier()
+kmeans = KMeansColorClassifier(DATA_PROCESSED)
 
 if __name__ == "__main__":
     etl.save_json(DATA_PROCESSED) # Save the processed data to a JSON file
@@ -34,6 +36,9 @@ if __name__ == "__main__":
 
     rf.train_model("Color",DATA_CLEANED)  # Train the Random Forest model
     rf.predict_color({"Red": 109, "Green": 124, "Blue": 117, "Clear": 359, "Lux": 86})
+
+    kmeans.visualize_clusters("Color")  # Visualize clusters using K-Means
+    print(kmeans.check_cluster_Var("Cluster", "Color"))  # Check cluster variance
 
 
 
