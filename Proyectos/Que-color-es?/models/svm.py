@@ -5,7 +5,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report
 from models.trainmodel import model_train
-import pandas as pd
+import matplotlib.pyplot as plt
 
 class SVMColorClassifier(model_train):
     def __init__(self,path):
@@ -31,13 +31,25 @@ class SVMColorClassifier(model_train):
         cm = confusion_matrix(y_test, y_pred)
         print("Matriz de confusión:")
         print(cm)
+        plt.figure(figsize=(10, 7))
+        plt.imshow(cm, cmap='Blues', interpolation='nearest')
+        plt.xlabel('Predicción')
+        plt.ylabel('Realidad')
+        plt.show()
+
 
         labels = sorted(set(y_test))
         target_names = self.le.inverse_transform(labels)
         cr = classification_report(y_test, y_pred, labels=labels, target_names=self.le.classes_)
         print("\nInforme de classificación:")
         print(cr)
-    
+        plt.figure(figsize=(10, 7))
+        plt.imshow(confusion_matrix(y_test, y_pred, labels=labels), cmap='Blues', interpolation='nearest')
+        plt.xlabel('Predicción')
+        plt.ylabel('Realidad')
+        plt.show()
+
+        
     def predict_color(self, sample_dict):
         import pandas as pd
         X_sample = pd.DataFrame([sample_dict])

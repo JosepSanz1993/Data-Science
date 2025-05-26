@@ -4,7 +4,7 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 import pandas as pd
-from trainmodel import pl
+from models.trainmodel import pl
 class KMeansColorClassifier(model_train):
     def __init__(self, data_path):
         self.model = None

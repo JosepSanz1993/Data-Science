@@ -1,9 +1,10 @@
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report,confusion_matrix
 from models.trainmodel import model_train
 from models.trainmodel import pl
+import matplotlib.pyplot as plt
 import numpy as np
 
 class ColorClassifier(model_train):
@@ -29,6 +30,20 @@ class ColorClassifier(model_train):
         unique_labels = np.unique(y_test)
         print("Classificación:")
         print(classification_report(y_test, y_pred, labels=unique_labels, target_names=self.encoder.classes_))
+        plt.figure(figsize=(10, 7))
+        plt.imshow(confusion_matrix(y_test, y_pred, labels=unique_labels), cmap='Blues', interpolation='nearest')
+        plt.xlabel('Predicción')
+        plt.ylabel('Realidad')
+        plt.show()
+
+
+        print("Matriz de confusión:")
+        print(confusion_matrix(y_test, y_pred, labels=unique_labels))
+        plt.figure(figsize=(10, 7))
+        plt.imshow(confusion_matrix(y_test, y_pred, labels=unique_labels), cmap='Blues', interpolation='nearest')
+        plt.xlabel('Predicción')
+        plt.ylabel('Realidad')
+        plt.show()
 
     def predict_color(self, input_array):
         if self.model is None:
