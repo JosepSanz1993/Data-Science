@@ -30,21 +30,21 @@ class ColorClassifier(model_train):
         unique_labels = np.unique(y_test)
         print("Classificación:")
         print(classification_report(y_test, y_pred, labels=unique_labels, target_names=self.encoder.classes_))
-        plt.title('Reporte de clasificación mlp')
         plt.figure(figsize=(10, 7))
         plt.imshow(confusion_matrix(y_test, y_pred, labels=unique_labels), cmap='Blues', interpolation='nearest')
         plt.xlabel('Predicción')
         plt.ylabel('Realidad')
+        plt.title('Reporte de clasificación mlp')
         plt.show()
 
 
         print("Matriz de confusión:")
         print(confusion_matrix(y_test, y_pred, labels=unique_labels))
-        plt.title('Matriz de confusión mlp')
         plt.figure(figsize=(10, 7))
         plt.imshow(confusion_matrix(y_test, y_pred, labels=unique_labels), cmap='Blues', interpolation='nearest')
         plt.xlabel('Predicción')
         plt.ylabel('Realidad')
+        plt.title('Matriz de confusión mlp')
         plt.show()
 
     def predict_color(self, input_array):

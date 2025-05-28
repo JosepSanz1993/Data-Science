@@ -31,11 +31,11 @@ class SVMColorClassifier(model_train):
         cm = confusion_matrix(y_test, y_pred)
         print("Matriz de confusión:")
         print(cm)
-        plt.title('Matriz de confusión SVM')
         plt.figure(figsize=(10, 7))
         plt.imshow(cm, cmap='Blues', interpolation='nearest')
         plt.xlabel('Predicción')
         plt.ylabel('Realidad')
+        plt.title('Matriz de confusión SVM')
         plt.show()
 
 
@@ -44,11 +44,11 @@ class SVMColorClassifier(model_train):
         cr = classification_report(y_test, y_pred, labels=labels, target_names=self.le.classes_)
         print("\nInforme de classificación:")
         print(cr)
-        plt.title('Reporte de clasificación SVM')
         plt.figure(figsize=(10, 7))
         plt.imshow(confusion_matrix(y_test, y_pred, labels=labels), cmap='Blues', interpolation='nearest')
         plt.xlabel('Predicción')
         plt.ylabel('Realidad')
+        
         plt.show()
 
         
