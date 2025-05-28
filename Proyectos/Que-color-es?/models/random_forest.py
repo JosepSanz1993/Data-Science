@@ -29,6 +29,7 @@ class RandomForestColorClassifier(model_train):
     def plot_confusion_matrix(self, y_true, y_pred, labels):
         cm = confusion_matrix(y_true, y_pred, labels=labels)
         plt.figure(figsize=(10, 8))
+        plt.title("Matriz de Confusión random Forest")
         sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
                     xticklabels=self.encoder.inverse_transform(labels),
                     yticklabels=self.encoder.inverse_transform(labels))
