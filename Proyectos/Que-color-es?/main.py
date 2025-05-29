@@ -5,6 +5,7 @@ from models.random_forest import RandomForestColorClassifier
 from scripts.global_var import *
 from scripts.etl import ETL
 from models.kmeans import KMeansColorClassifier
+import argparse
 
 etl = ETL(DATA_NOT_PROCESSED)
 anomaly = AnomalyCleaner()
@@ -13,9 +14,12 @@ rf = RandomForestColorClassifier()
 kmeans = KMeansColorClassifier(DATA_PROCESSED)
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Color classification with optional anomaly detection.")
+    parser.add_argument("--detect-anomalies", action="store_true", help="Enable anomaly detection step")
+    args = parser.parse_args()
     etl.save_json(DATA_PROCESSED) # Save the processed data to a JSON file
-    input_data = input("Do you want to detect anomalies? (yes/no):/n ").strip().lower()
-    if input_data == "yes":
+
+    if args.detect_anomalies:
         anomaly.load_data(DATA_PROCESSED)  # Load the processed data
         anomaly.train_model("Color")  # Train the anomaly detection model
         anomaly.show_anomalies()  # Show detected anomalies
@@ -37,7 +41,7 @@ if __name__ == "__main__":
 
         rf.train_model("Color",DATA_CLEANED)  # Train the Random Forest model
         rf.predict_color({"Red": 109, "Green": 124, "Blue": 117, "Clear": 359, "Lux": 86})
-        
+
         kmeans = KMeansColorClassifier(DATA_PROCESSED)
         kmeans.visualize_clusters("Color")  # Visualize clusters using K-Means
         print(kmeans.check_cluster_Var("Cluster", "Color"))  # Check cluster variance
