@@ -42,3 +42,6 @@ Modelos disponibles-->MLP (Perceptrón multicapa)
                    -->Isolation Forest
                    
 📊 Datos-->Los datos se encuentran en la carpeta data/, separados en raw/ (datos originales) y processed/ (tras ETL).
+
+Ejecutar proyecto--> Sin el insolation en terminal Python main.py
+                 --> Con Insolation en terminal Python main --detect-anomalies. 
