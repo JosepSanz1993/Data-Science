@@ -35,3 +35,4 @@ class KMeansColorClassifier(model_train):
     def check_cluster_Var(self,cluster,var):
         return pd.crosstab(self.data[cluster],self.data[var])
     
+ 

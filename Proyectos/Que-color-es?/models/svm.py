@@ -1,4 +1,3 @@
-import models.trainmodel as pl
 from sklearn.svm import SVC
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.pipeline import make_pipeline
@@ -8,7 +7,6 @@ from models.trainmodel import model_train
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-import numpy as np
 
 class SVMColorClassifier(model_train):
     def __init__(self, path):

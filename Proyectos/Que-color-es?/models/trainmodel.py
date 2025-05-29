@@ -7,4 +7,3 @@ class model_train(metaclass=ABCMeta):
     @abstractmethod
     def train_model(self,colum,target_column):
         pass
-   
