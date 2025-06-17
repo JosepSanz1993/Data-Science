@@ -48,7 +48,9 @@ class RandomForestColorClassifier(model_train):
 
         self.model = RandomForestClassifier(n_estimators=100, random_state=42)
         self.model.fit(X_train, y_train)
-
+        self.save_model(self.model,'random.pkl')
+        self.save_encoder(self.encoder, 'random_encoder.pkl')
+        self.save_scaler(self.scaler,"random_scaler.pkl")
         y_pred = self.model.predict(X_test)
         unique_labels = np.unique(y_test)
 

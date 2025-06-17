@@ -30,6 +30,9 @@ class SVMColorClassifier(model_train):
 
         self.model = make_pipeline(StandardScaler(), SVC(kernel='rbf', C=1, gamma='scale'))
         self.model.fit(X_train, y_train)
+        self.save_model(self.model,'svm.pkl')
+        self.save_encoder(self.le,'svm_encoder.pkl')
+        self.save_scaler(self.scaler,'svm_scaler.pkl')
         y_pred = self.model.predict(X_test)
 
         labels = list(range(len(self.le.classes_)))

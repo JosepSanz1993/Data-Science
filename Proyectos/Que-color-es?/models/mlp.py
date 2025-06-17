@@ -26,6 +26,8 @@ class ColorClassifier(model_train):
 
         self.model = MLPClassifier(hidden_layer_sizes=(10, 10), max_iter=500, random_state=1)
         self.model.fit(X_train, y_train)
+        self.save_model(self.model,'mlp.pkl')
+        self.save_encoder(self.encoder,'mlp_encoder.pkl')
         y_pred = self.model.predict(X_test)
 
        # Matriz de confusion

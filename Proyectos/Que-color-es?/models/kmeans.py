@@ -18,6 +18,8 @@ class KMeansColorClassifier(model_train):
         clusters = self.model.fit_predict(X_scaled)
         self.data = self.data.with_columns(pl.Series("Cluster", clusters))
         self.data.to_pandas().to_json('data/processed/kmeans.json', orient='records')
+        self.save_model(self.model,'kmeans.pkl')
+        self.save_scaler(scaler, 'scaler_kmeans.pkl')
         return X_scaled
 
     def visualize_clusters(self, target_column):
