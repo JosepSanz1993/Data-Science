@@ -43,5 +43,7 @@ Modelos disponibles-->MLP (Perceptrón multicapa)
                    
 📊 Datos-->Los datos se encuentran en la carpeta data/, separados en raw/ (datos originales) y processed/ (tras ETL).
 
-Ejecutar proyecto--> Sin el insolation en terminal Python main.py
-                 --> Con Insolation en terminal Python main.py --detect-anomalies. 
+Ejecutar proyecto para provar funcionamiento--> Sin el insolation en terminal Python main.py
+                 -->Con Insolation en terminal Python main.py --detect-anomalies. 
+Ejecutar proyecto-->streamlit run app.py, dode esta el front-end.
+                 
